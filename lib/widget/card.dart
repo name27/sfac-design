@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
+import 'package:widgets/widget/keyword.dart';
 
 class Cards extends StatelessWidget {
   const Cards(
@@ -11,25 +12,31 @@ class Cards extends StatelessWidget {
       this.subtitle,
       this.width,
       this.height,
+      this.imageHeight = 145,
       this.titleTextStyle,
       this.subtitleTextStyle,
-      this.ketword,
+      this.keyword,
       this.imageTopRadius = 10,
       this.imageBottomRadius = 0,
       this.borderRadius = 10,
-      this.outlineColor});
+      this.outlineColor,
+      this.outlineWidth = 1.0,
+      this.bottom});
   final Widget? image;
   final Widget? title;
   final Widget? subtitle;
   final double? width;
   final double? height;
+  final double imageHeight;
   final TextStyle? titleTextStyle;
   final TextStyle? subtitleTextStyle;
-  final List<Widget>? ketword;
+  final List<Widget?>? keyword;
   final double imageTopRadius;
   final double imageBottomRadius;
   final double borderRadius;
   final Color? outlineColor;
+  final double outlineWidth;
+  final Widget? bottom;
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +68,12 @@ class Cards extends StatelessWidget {
       decoration:
           BoxDecoration(borderRadius: BorderRadius.circular(borderRadius)),
       child:
-          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(
           width: width,
-          height: 145,
+          height: imageHeight,
           decoration: BoxDecoration(
             color: SfacColor.primary5,
             borderRadius: BorderRadius.only(
@@ -82,9 +91,8 @@ class Cards extends StatelessWidget {
         ),
         titleText ?? const SizedBox(),
         subtitleText ?? const SizedBox(),
-        // Wrap(
-        //   children: ketword?.map((e) => Chip(label: Text(e, style: TextStyle(fontSize: 12),))).toList() ?? [],
-        // )
+        Keyword(keyword: keyword ?? []),
+        bottom ?? const SizedBox()
       ]),
     );
   }

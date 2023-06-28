@@ -14,7 +14,8 @@ class SearchField extends StatefulWidget {
       this.focusedTrailing,
       this.controller,
       this.onchanged,
-      this.onSubmitted});
+      this.onSubmitted,
+      this.outlineWidth = 1.0});
   final Widget? hintText;
   final Widget? trailing;
   final bool? onfocused;
@@ -27,6 +28,7 @@ class SearchField extends StatefulWidget {
   final TextEditingController? controller;
   final Function(String)? onchanged;
   final Function(String)? onSubmitted;
+  final double outlineWidth;
 
   @override
   State<SearchField> createState() => _SearchFieldState();
