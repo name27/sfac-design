@@ -15,12 +15,13 @@ class Cards extends StatelessWidget {
       this.imageHeight = 145,
       this.titleTextStyle,
       this.subtitleTextStyle,
-      this.ketword,
+      this.keyword,
       this.imageTopRadius = 10,
       this.imageBottomRadius = 0,
       this.borderRadius = 10,
       this.outlineColor,
-      this.outlineWidth = 1.0});
+      this.outlineWidth = 1.0,
+      this.bottom});
   final Widget? image;
   final Widget? title;
   final Widget? subtitle;
@@ -29,16 +30,16 @@ class Cards extends StatelessWidget {
   final double imageHeight;
   final TextStyle? titleTextStyle;
   final TextStyle? subtitleTextStyle;
-  final List<Widget>? ketword;
+  final List<Widget?>? keyword;
   final double imageTopRadius;
   final double imageBottomRadius;
   final double borderRadius;
   final Color? outlineColor;
   final double outlineWidth;
+  final Widget? bottom;
 
   @override
   Widget build(BuildContext context) {
-    List<String> keywords = ['모집중', '무료강의', '사업계획서'];
     Widget? titleText;
     TextStyle? titleStyle;
     if (title != null) {
@@ -67,7 +68,9 @@ class Cards extends StatelessWidget {
       decoration:
           BoxDecoration(borderRadius: BorderRadius.circular(borderRadius)),
       child:
-          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(
           width: width,
           height: imageHeight,
@@ -88,7 +91,8 @@ class Cards extends StatelessWidget {
         ),
         titleText ?? const SizedBox(),
         subtitleText ?? const SizedBox(),
-        Keyword(keyword: keywords.map((e) => Text(e)).toList())
+        Keyword(keyword: keyword ?? []),
+        bottom ?? const SizedBox()
       ]),
     );
   }

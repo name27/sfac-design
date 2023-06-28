@@ -11,7 +11,8 @@ class Keyword extends StatelessWidget {
       this.backgroundColor,
       this.outlineColor,
       this.textStyle,
-      this.outlineWidth  = 1.0});
+      this.outlineWidth = 1.0,
+      this.verticalMargin = -2});
   final List<Widget?> keyword;
   final TextStyle? textStyle;
   final double spacing;
@@ -19,6 +20,7 @@ class Keyword extends StatelessWidget {
   final Color? backgroundColor;
   final Color? outlineColor;
   final double outlineWidth;
+  final double verticalMargin;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +36,12 @@ class Keyword extends StatelessWidget {
             ))
         .toList();
     return Wrap(
+        spacing: spacing,
         children: keywordText
             .map((e) => Chip(
+                  padding: EdgeInsets.zero,
+                  visualDensity:
+                      VisualDensity(horizontal: 0.0, vertical: verticalMargin),
                   label: e,
                   backgroundColor: backgroundColor ?? SfacColor.grayScale5,
                   shape: RoundedRectangleBorder(
