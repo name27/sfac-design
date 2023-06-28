@@ -3,7 +3,7 @@ import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
 class SfacBadge extends StatelessWidget {
-  const SfacBadge(
+ const SfacBadge(
       {super.key,
       required this.keyWord,
       required this.keyWordColor,

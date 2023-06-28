@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SelectedSub extends StatefulWidget {
-  const SelectedSub(
-      {super.key,
-      required this.children,
-      this.focusedChild,
-      this.backgroundColor,
-      this.focusedBackgroundColor});
+  const SelectedSub({super.key, required this.children, this.focusedChild});
   final List<Widget?> children;
   final Widget? focusedChild;
-  final Color? backgroundColor;
-  final Color? focusedBackgroundColor;
 
   @override
   State<SelectedSub> createState() => _SelectedSubState();
