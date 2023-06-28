@@ -45,7 +45,7 @@ class SfacInput extends StatelessWidget {
             helperText: helperText,
             helperStyle: SfacTextStyle.b5R12(color: SfacColor.grayScale40),
             errorText: errorText,
-            //에러text가 있을 경우 에러 글자수에 따라 에러색을 다르게할까말까..흠..
+            //에러text가 있을 경우 에러 글자수에 따라 에러색을 다르게 해야하나 말아야하나..
             errorStyle: SfacTextStyle.b5R12(
             color: SfacColor.red),
             border: OutlineInputBorder(
