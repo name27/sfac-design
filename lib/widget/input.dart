@@ -32,14 +32,22 @@ class SfacInput extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if(inputContent != null) inputContent!,
+        if(inputContent != null) Padding(
+          padding: const EdgeInsets.only(left: 10,bottom: 3),
+          child: inputContent!,
+        ),
         TextFormField(
           decoration: InputDecoration(
             hintText: hintText,
-            helperStyle: SfacTextStyle.b4M14(color: SfacColor.grayScale20),
+            hintStyle: SfacTextStyle.b4M14(color: SfacColor.grayScale20),
             filled: true,
             fillColor: fillColor,
             helperText: helperText,
+            helperStyle: SfacTextStyle.b5R12(color: SfacColor.grayScale40),
+            errorText: errorText,
+            //에러text가 있을 경우 에러 글자수에 따라 에러색을 다르게할까말까..흠..
+            errorStyle: SfacTextStyle.b5R12(
+            color: SfacColor.red),
             border: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(inputDecorationBorderRadius)
