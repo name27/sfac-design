@@ -7,12 +7,13 @@ class Badge extends StatelessWidget {
       this.backgroundColor,
       this.outlineColor,
       this.width = 55,
-      this.height = 20});
+      this.height = 20, this.outlineWidth  = 1.0});
   final Widget? child;
   final Color? backgroundColor;
   final Color? outlineColor;
   final double width;
   final double height;
+  final double outlineWidth;
 
   @override
   Widget build(BuildContext context) {

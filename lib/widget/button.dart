@@ -14,7 +14,8 @@ class Button extends StatefulWidget {
       this.changeBackgroundColor,
       this.changeOutlineColor,
       this.width,
-      this.height});
+      this.height,
+      this.outlineWidth  = 1.0});
   final Widget? child;
   final Color? backgroundColor;
   final Color? outlineColor;
@@ -25,6 +26,7 @@ class Button extends StatefulWidget {
   final Color? changeOutlineColor;
   final Double? width;
   final Double? height;
+  final double outlineWidth;
 
   @override
   State<Button> createState() => _ButtonState();

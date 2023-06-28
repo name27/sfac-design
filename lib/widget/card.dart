@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
+import 'package:widgets/widget/keyword.dart';
 
 class Cards extends StatelessWidget {
   const Cards(
@@ -11,18 +12,21 @@ class Cards extends StatelessWidget {
       this.subtitle,
       this.width,
       this.height,
+      this.imageHeight = 145,
       this.titleTextStyle,
       this.subtitleTextStyle,
       this.ketword,
       this.imageTopRadius = 10,
       this.imageBottomRadius = 0,
       this.borderRadius = 10,
-      this.outlineColor});
+      this.outlineColor,
+      this.outlineWidth = 1.0});
   final Widget? image;
   final Widget? title;
   final Widget? subtitle;
   final double? width;
   final double? height;
+  final double imageHeight;
   final TextStyle? titleTextStyle;
   final TextStyle? subtitleTextStyle;
   final List<Widget>? ketword;
@@ -30,9 +34,11 @@ class Cards extends StatelessWidget {
   final double imageBottomRadius;
   final double borderRadius;
   final Color? outlineColor;
+  final double outlineWidth;
 
   @override
   Widget build(BuildContext context) {
+    List<String> keywords = ['모집중', '무료강의', '사업계획서'];
     Widget? titleText;
     TextStyle? titleStyle;
     if (title != null) {
@@ -64,7 +70,7 @@ class Cards extends StatelessWidget {
           Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Container(
           width: width,
-          height: 145,
+          height: imageHeight,
           decoration: BoxDecoration(
             color: SfacColor.primary5,
             borderRadius: BorderRadius.only(
@@ -82,9 +88,7 @@ class Cards extends StatelessWidget {
         ),
         titleText ?? const SizedBox(),
         subtitleText ?? const SizedBox(),
-        // Wrap(
-        //   children: ketword?.map((e) => Chip(label: Text(e, style: TextStyle(fontSize: 12),))).toList() ?? [],
-        // )
+        Keyword(keyword: keywords.map((e) => Text(e)).toList())
       ]),
     );
   }
