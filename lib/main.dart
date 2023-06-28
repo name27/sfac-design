@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
                 GFButton(onPressed: () {}),
                 Cards(
                   width: 250,
+                  keyword: ['무료강의','사업계획서', '모집중'].map((e) => Text(e)).toList(),
                   title: Text('AI 서비스 완성! AI + 웹 개발 취업캠프(프론트엔드&백엔드)'),
                   subtitle: Text('하루만에 살펴보는 전문가1인 창업 및 기술 사업화에 필요한 사업계획서 작성방법'),
                 ),
