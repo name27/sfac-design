@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:widgets/util/sfac_color.dart';
+import 'package:widgets/util/sfac_text_style.dart';
 
 class Keyword extends StatelessWidget {
   const Keyword(
@@ -7,15 +9,49 @@ class Keyword extends StatelessWidget {
       this.borderRadius = 10,
       this.spacing = 5,
       this.backgroundColor,
-      this.outlineColor});
+      this.outlineColor,
+      this.textStyle,
+      this.outlineWidth = 1.0,
+      this.verticalMargin = -2});
   final List<Widget?> keyword;
+  final TextStyle? textStyle;
   final double spacing;
   final double borderRadius;
   final Color? backgroundColor;
   final Color? outlineColor;
+  final double outlineWidth;
+  final double verticalMargin;
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    List<Widget>? keywordText;
+    TextStyle? keywordStyle;
+    keywordStyle =
+        textStyle ?? SfacTextStyle.b5R12(color: SfacColor.grayScale60);
+    keywordText = keyword
+        .map((e) => AnimatedDefaultTextStyle(
+              style: keywordStyle!,
+              duration: kThemeChangeDuration,
+              child: e!,
+            ))
+        .toList();
+    return Wrap(
+        spacing: spacing,
+        children: keywordText
+            .map((e) => Chip(
+                  padding: EdgeInsets.zero,
+                  visualDensity:
+                      VisualDensity(horizontal: 0.0, vertical: verticalMargin),
+                  label: e,
+                  backgroundColor: backgroundColor ?? SfacColor.grayScale5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(borderRadius),
+                    side: BorderSide(
+                      color: outlineColor ?? SfacColor.grayScale5,
+                      width: outlineWidth,
+                    ),
+                  ),
+                ))
+            .toList());
   }
 }

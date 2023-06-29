@@ -7,7 +7,8 @@ class SfacSearchField extends StatelessWidget {
   required this.controller,
   required this.hintText,
   this.onchanged,
-  this.onSubmitted
+  this.onSubmitted,
+  required this.outlineWidth
   });
   
   final TextEditingController controller;
@@ -17,6 +18,7 @@ class SfacSearchField extends StatelessWidget {
   final Function(String)? onchanged;
   //onSubmitted: 키보드의 입력완료를 눌렀을 때
   final Function(String)? onSubmitted;
+  final double outlineWidth;
 
   @override
   Widget build(BuildContext context) {

@@ -3,16 +3,20 @@ import 'package:flutter/material.dart';
 class Tab extends StatefulWidget {
   const Tab(
       {super.key,
-      this.child,
+      required this.children,
+      required this.screen,
       this.focusedChild,
       this.focusedColor,
       this.width,
-      this.height});
-  final Widget? child;
+      this.height,
+      this.outlineWidth = 1.0});
+  final List<Widget?> children;
+  final List<Widget?> screen;
   final Widget? focusedChild;
   final Color? focusedColor;
   final double? width;
   final double? height;
+  final double outlineWidth;
 
   @override
   State<Tab> createState() => _TabState();

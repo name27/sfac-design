@@ -3,16 +3,16 @@ import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
 class SfacBadge extends StatelessWidget {
-  const SfacBadge({
-    super.key,
-    required this.keyWord,
-    this.keyWordColor,
-    this.backgroundColor,
-    this.outlineColor,
-    this.borderRadius = 4,
-    this.width = 55,
-    this.height = 20,
-  });
+ const SfacBadge(
+      {super.key,
+      required this.keyWord,
+      required this.keyWordColor,
+      this.backgroundColor= SfacColor.primary80,
+      this.outlineColor,
+      this.borderRadius = 4,
+      this.width = 55,
+      this.height = 20,
+      });
 
   final String keyWord;
   final Color? keyWordColor;
