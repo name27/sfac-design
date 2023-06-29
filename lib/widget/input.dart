@@ -4,11 +4,12 @@ import 'package:widgets/util/sfac_text_style.dart';
 
 class SfacInput extends StatelessWidget {
   const SfacInput({super.key,
+    this.onchanged,
     this.inputContent,
     this.fillColor,
     required this.hintText,
     this.errorText,
-    this.controller,
+    required this.controller,
     this.onChanged,
     this.obscureText = false,
     this.errorTextColor,
@@ -16,7 +17,9 @@ class SfacInput extends StatelessWidget {
     this.inputDecorationBorderRadius = 10,
     });
 
-  final TextEditingController? controller; //텍스트 필드 컨트롤러
+  final TextEditingController controller; //텍스트 필드 컨트롤러
+  //onChanged: input 칸의 내용이 바로바로 바뀔 때
+  final Function(String)? onchanged;
   final Text? inputContent;
   final Color? fillColor;
   final String? hintText; //힌트 텍스트
@@ -37,6 +40,8 @@ class SfacInput extends StatelessWidget {
           child: inputContent!,
         ),
         TextFormField(
+          onChanged: onchanged,
+          controller: controller,
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: SfacTextStyle.b4M14(color: SfacColor.grayScale20),
