@@ -15,7 +15,6 @@ class SfacBadge extends StatelessWidget {
     this.verticalMargin = 5,
     this.horizontalMargin = 8,
   });
-
   final Widget? child;
   final Color? keywordColor;
   final Color? backgroundColor;

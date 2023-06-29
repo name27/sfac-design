@@ -1,42 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:widgets/util/sfac_color.dart';
+import 'package:widgets/util/sfac_text_style.dart';
 
-class SearchField extends StatefulWidget {
-  const SearchField(
-      {super.key,
-      this.hintText,
-      this.trailing,
-      this.onfocused,
-      this.borderRadius = 10,
-      this.outlineColor,
-      this.backgroundColor,
-      this.focusedOutlineColor,
-      this.focusedBackgroundColor,
-      this.focusedTrailing,
-      this.controller,
-      this.onchanged,
-      this.onSubmitted,
-      this.outlineWidth = 1.0});
-  final Widget? hintText;
-  final Widget? trailing;
-  final bool? onfocused;
-  final double borderRadius;
-  final Color? outlineColor;
-  final Color? backgroundColor;
-  final Color? focusedOutlineColor;
-  final Color? focusedBackgroundColor;
-  final Widget? focusedTrailing;
-  final TextEditingController? controller;
+class SfacSearchField extends StatelessWidget {
+  const SfacSearchField({super.key,
+  required this.controller,
+  required this.hintText,
+  this.onchanged,
+  this.onSubmitted,
+  required this.outlineWidth
+  });
+  
+  final TextEditingController controller;
+  //힌트텍스트
+  final String hintText;
+  //onChanged: input 칸의 내용이 바로바로 바뀔 때
   final Function(String)? onchanged;
+  //onSubmitted: 키보드의 입력완료를 눌렀을 때
   final Function(String)? onSubmitted;
   final double outlineWidth;
 
   @override
-  State<SearchField> createState() => _SearchFieldState();
-}
-
-class _SearchFieldState extends State<SearchField> {
-  @override
   Widget build(BuildContext context) {
-    return const TextField();
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        filled: true,
+          fillColor: Colors.transparent,
+          hintText: hintText,
+          hintStyle: SfacTextStyle.b4R14(color: SfacColor.grayScale20),
+        suffixIcon: Icon(Icons.search),
+        focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: SfacColor.primary30,width: 2),borderRadius: BorderRadius.all(Radius.circular(10))),
+        enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: SfacColor.grayScale20),borderRadius: BorderRadius.all(Radius.circular(10))),
+        ),
+        onChanged: onchanged,
+        onSubmitted: onSubmitted,
+    );
   }
 }
