@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
-class SelectedSub extends StatefulWidget {
-  const SelectedSub({
+class SfSelectedSub extends StatefulWidget {
+  const SfSelectedSub({
     super.key,
     required this.text,
     this.width,
@@ -24,10 +24,10 @@ class SelectedSub extends StatefulWidget {
   final EdgeInsetsGeometry? margin;
 
   @override
-  State<SelectedSub> createState() => _SelectedSubState();
+  State<SfSelectedSub> createState() => _SelectedSubState();
 }
 
-class _SelectedSubState extends State<SelectedSub> {
+class _SelectedSubState extends State<SfSelectedSub> {
   int focusedChild = 0;
   @override
   Widget build(BuildContext context) {

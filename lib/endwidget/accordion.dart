@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
-class Accordion extends StatefulWidget {
-  const Accordion({
+class SfAccordion extends StatefulWidget {
+  const SfAccordion({
     super.key,
     required this.defaultIcon,
     this.selectedIcon,
@@ -32,10 +32,10 @@ class Accordion extends StatefulWidget {
   final double? width;
 
   @override
-  State<Accordion> createState() => _AccordionState();
+  State<SfAccordion> createState() => _AccordionState();
 }
 
-class _AccordionState extends State<Accordion> {
+class _AccordionState extends State<SfAccordion> {
   bool isVisible = false;
   @override
   Widget build(BuildContext context) {
