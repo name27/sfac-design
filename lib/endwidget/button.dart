@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
+import 'package:widgets/util/sfac_text_style.dart';
 
 class SfButton extends StatefulWidget {
   const SfButton(
@@ -32,6 +33,16 @@ class SfButton extends StatefulWidget {
 class _ButtonState extends State<SfButton> {
   @override
   Widget build(BuildContext context) {
+    Widget? childText;
+    TextStyle? childStyle;
+    if (widget.child != null) {
+      childStyle = SfacTextStyle.b3B16(color: Colors.white);
+      childText = AnimatedDefaultTextStyle(
+        style: childStyle,
+        duration: kThemeChangeDuration,
+        child: widget.child!,
+      );
+    }
     return SizedBox(
       width: widget.width,
       height: widget.height,
@@ -52,7 +63,7 @@ class _ButtonState extends State<SfButton> {
             width: widget.outlineWidth,
           ),
         ),
-        child: widget.child,
+        child: childText,
       ),
     );
   }

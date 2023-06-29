@@ -13,10 +13,10 @@ class SfAccordion extends StatefulWidget {
     this.contentRadius = 10,
     this.titleTextStyle,
     this.contentTextStyle,
-    this.contentPaddingvertical = 5,
-    this.contentPaddingHorizontal = 10,
-    this.contentMargin = 15,
+    this.contentPadding,
+    this.contentMargin,
     this.width,
+    this.titleWidth,
   });
   final Widget defaultIcon;
   final Widget? selectedIcon;
@@ -26,10 +26,10 @@ class SfAccordion extends StatefulWidget {
   final double contentRadius;
   final TextStyle? titleTextStyle;
   final TextStyle? contentTextStyle;
-  final double contentPaddingvertical;
-  final double contentPaddingHorizontal;
-  final double contentMargin;
+  final EdgeInsetsGeometry? contentPadding;
+  final EdgeInsetsGeometry? contentMargin;
   final double? width;
+  final double? titleWidth;
 
   @override
   State<SfAccordion> createState() => _AccordionState();
@@ -64,40 +64,37 @@ class _AccordionState extends State<SfAccordion> {
 
     return Column(
       children: [
-        FittedBox(
-          fit: BoxFit.fitWidth,
-          child: Row(
-            children: [
-              GestureDetector(
-                  onTap: () {
-                    isVisible = !isVisible;
-                    setState(() {});
-                  },
-                  child: isVisible
-                      ? widget.selectedIcon ?? widget.defaultIcon
-                      : widget.defaultIcon),
-              const SizedBox(width: 10),
-              SizedBox(
-                  width:
-                      widget.width ?? MediaQuery.of(context).size.width * 0.88,
-                  child: titleText),
-            ],
-          ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GestureDetector(
+                onTap: () {
+                  isVisible = !isVisible;
+                  setState(() {});
+                },
+                child: isVisible
+                    ? widget.selectedIcon ?? widget.defaultIcon
+                    : widget.defaultIcon),
+            const SizedBox(width: 5),
+            SizedBox(
+                width: widget.titleWidth ??
+                    MediaQuery.of(context).size.width * 0.85,
+                child: titleText),
+          ],
         ),
         isVisible
             ? Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: widget.contentPaddingvertical,
-                    horizontal: widget.contentPaddingHorizontal),
+                padding: widget.contentPadding ??
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 child: Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: widget.width ?? MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       color:
                           widget.contentBackgroundColor ?? SfacColor.grayScale5,
                       borderRadius: BorderRadius.all(
                           Radius.circular(widget.contentRadius))),
                   child: Padding(
-                      padding: EdgeInsets.all(widget.contentMargin),
+                      padding: widget.contentMargin ?? const EdgeInsets.all(15),
                       child: contentText),
                 ),
               )
