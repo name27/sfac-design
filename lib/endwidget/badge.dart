@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
-import 'package:widgets/util/sfac_text_style.dart';
 
-class SfacBadge extends StatelessWidget {
-  const SfacBadge({
+class SfBadge extends StatelessWidget {
+  const SfBadge({
     super.key,
-    required this.child,
-    this.keywordColor,
+    this.child,
     this.backgroundColor,
     this.outlineColor,
     this.borderRadius = 4,
@@ -15,8 +13,8 @@ class SfacBadge extends StatelessWidget {
     this.verticalMargin = 5,
     this.horizontalMargin = 8,
   });
+
   final Widget? child;
-  final Color? keywordColor;
   final Color? backgroundColor;
   final Color? outlineColor;
   final double borderRadius;
@@ -27,16 +25,6 @@ class SfacBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Widget? keywordText;
-    // TextStyle? keywordStyle;
-    // if (keyword != null) {
-    //   keywordStyle =  SfacTextStyle.b5R12(color: SfacColor.grayScale100);
-    //   keywordText = AnimatedDefaultTextStyle(
-    //     style: keywordStyle,
-    //     duration: kThemeChangeDuration,
-    //     child: keyword!,
-    //   );
-    // }
     return Container(
       width: width,
       height: height,

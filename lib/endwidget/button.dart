@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
 
@@ -12,7 +10,6 @@ class SfButton extends StatefulWidget {
       required this.onPressed,
       this.disabledForegroundColor,
       this.disabledBackgroundColor,
-      this.disabledOutlineColor,
       this.width,
       this.height,
       this.outlineWidth = 1.0,
@@ -23,7 +20,6 @@ class SfButton extends StatefulWidget {
   final void Function()? onPressed;
   final Color? disabledForegroundColor;
   final Color? disabledBackgroundColor;
-  final Color? disabledOutlineColor;
   final double? width;
   final double? height;
   final double outlineWidth;
