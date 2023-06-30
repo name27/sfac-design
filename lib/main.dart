@@ -1,12 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:widgets/util/sfac_color.dart';
-import 'package:widgets/util/sfac_icon.dart';
-import 'package:widgets/util/sfac_text_style.dart';
-import 'package:widgets/widget/badge.dart';
-import 'package:widgets/widget/input.dart';
-import 'package:widgets/widget/search_field.dart';
-=======
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgets/endwidget/accordion.dart';
 import 'package:widgets/endwidget/avatar.dart';
@@ -21,7 +13,8 @@ import 'package:widgets/endwidget/title_subtitle.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_icon.dart';
 import 'package:widgets/util/sfac_text_style.dart';
->>>>>>> main
+import 'package:widgets/widget/input.dart';
+import 'package:widgets/widget/search_field.dart';
 
 void main() {
   runApp(const MyApp());
@@ -44,7 +37,6 @@ class MyApp extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-<<<<<<< HEAD
                   SfacInput(inputContent: Text('Input',style: SfacTextStyle.b4B14(color: SfacColor.primary80),),hintText: 'Input(텍스트필드)', controller: TextEditingController(),helperText: '나 Input(텍스트필드)',),
                   const Divider(
                     thickness: 3,
@@ -141,7 +133,6 @@ class MyApp extends StatelessWidget {
                   Divider(
                     thickness: 3,
                   ),
-=======
                   Text(
                     'Primary',
                     style: SfacTextStyle.b1B20(),
@@ -509,7 +500,6 @@ class MyApp extends StatelessWidget {
                           .toList(),
                       height: 50),
                   const SizedBox(height: 10),
->>>>>>> main
                 ],
               ),
             ),
