@@ -25,7 +25,7 @@ class SfCard extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(outlineRadius),
           border: Border.all(
-            color: outlineColor ?? SfacColor.grayScale5,
+            color: outlineColor ?? SfacColor.grayScale20,
             width: outlineWidth,
           )),
       child: Padding(
