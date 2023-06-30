@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
 
-class SelectedMain extends StatefulWidget {
-  const SelectedMain({
+class SfSelectedMain extends StatefulWidget {
+  const SfSelectedMain({
     super.key,
     required this.children,
     this.width,
@@ -14,6 +14,7 @@ class SelectedMain extends StatefulWidget {
     this.outlineWidth,
     this.direction = Axis.vertical,
     this.onTap,
+    this.margin,
   });
   final List<Widget> children;
   final double? width;
@@ -25,12 +26,13 @@ class SelectedMain extends StatefulWidget {
   final double? outlineWidth;
   final Axis direction;
   final Function(int)? onTap;
+  final EdgeInsetsGeometry? margin;
 
   @override
-  State<SelectedMain> createState() => _SelectedMainState();
+  State<SfSelectedMain> createState() => _SelectedMainState();
 }
 
-class _SelectedMainState extends State<SelectedMain> {
+class _SelectedMainState extends State<SfSelectedMain> {
   int focusedChild = 0;
   @override
   Widget build(BuildContext context) {
@@ -51,14 +53,14 @@ class _SelectedMainState extends State<SelectedMain> {
           child: Container(
             decoration: BoxDecoration(
                 color: focusedChild == index
-                    ? SfacColor.primary5
+                    ? widget.focusedBackgroundColor ?? SfacColor.primary5
                     : widget.backgroundColor,
                 border: Border.all(
                     width: widget.outlineWidth ?? 0,
                     color: widget.outlineColor ?? Colors.transparent),
                 borderRadius: BorderRadius.circular(widget.radius)),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: widget.margin ?? const EdgeInsets.all(8.0),
               child: widget.children[index],
             ),
           ),

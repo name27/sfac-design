@@ -8,26 +8,29 @@ class SfCard extends StatelessWidget {
       this.outlineWidth = 1.0,
       this.outlineRadius = 10,
       this.outlineColor,
-      this.margin = 10});
+      this.margin = 10,
+      this.width,
+      this.height});
   final Widget? child;
   final double outlineWidth;
   final double outlineRadius;
   final Color? outlineColor;
   final double margin;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(outlineRadius),
+          border: Border.all(
+            color: outlineColor ?? SfacColor.grayScale5,
+            width: outlineWidth,
+          )),
       child: Padding(
         padding: EdgeInsets.all(margin),
-        child: child,
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(outlineRadius),
-        side: BorderSide(
-          color: outlineColor ?? SfacColor.grayScale5,
-          width: outlineWidth,
-        ),
+        child: SizedBox(width: width, height: height, child: child),
       ),
     );
   }
