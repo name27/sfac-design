@@ -7,7 +7,7 @@ class SfImageCard extends StatelessWidget {
       this.topRadius = 10,
       this.bottomRadius = 10,
       this.borderRadius});
-  final Image? image;
+  final Widget? image;
   final double topRadius;
   final double bottomRadius;
   final BorderRadiusGeometry? borderRadius;

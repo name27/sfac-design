@@ -8,6 +8,7 @@ import 'package:widgets/endwidget/card.dart';
 import 'package:widgets/endwidget/image_card.dart';
 import 'package:widgets/endwidget/select_main.dart';
 import 'package:widgets/endwidget/selected_sub.dart';
+import 'package:widgets/endwidget/tap.dart';
 import 'package:widgets/endwidget/title_subtitle.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_icon.dart';
@@ -59,8 +60,6 @@ class MyApp extends StatelessWidget {
                   Text('Disabled', style: SfacTextStyle.b1B20()),
                   const SfButton(
                     onPressed: null,
-                    backgroundColor: Colors.white,
-                    foregroundColor: SfacColor.primary60,
                     child: Text('로그인'),
                   ),
                   const SizedBox(height: 10),
@@ -108,8 +107,8 @@ class MyApp extends StatelessWidget {
                       SfSelectedMain(
                         width: 245,
                         height: 100,
-                        onTap: (p0) {
-                          print(p0);
+                        onTap: (index) {
+                          print(index);
                         },
                         children: [
                           Row(
@@ -139,8 +138,8 @@ class MyApp extends StatelessWidget {
                       SfSelectedSub(
                           width: 245,
                           height: 100,
-                          onTap: (p0) {
-                            print(p0);
+                          onTap: (index) {
+                            print(index);
                           },
                           menu: const ['앱개발', '앱 개발']),
                     ],
@@ -389,6 +388,17 @@ class MyApp extends StatelessWidget {
                       ],
                     ),
                   ),
+                  const SizedBox(height: 10),
+                  const Divider(thickness: 5),
+                  const SizedBox(height: 10),
+                  Text('Tap', style: SfacTextStyle.b1B20()),
+                  const SizedBox(height: 10),
+                  SfTab(
+                      menu: ['과제방', '커뮤니티', '미션', '퀴즈']
+                          .map((e) => Text(e))
+                          .toList(),
+                      height: 50),
+                  const SizedBox(height: 10),
                 ],
               ),
             ),
