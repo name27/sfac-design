@@ -5,7 +5,7 @@ import 'package:widgets/util/sfac_text_style.dart';
 class SfAccordion extends StatefulWidget {
   const SfAccordion({
     super.key,
-    required this.defaultIcon,
+    this.defaultIcon,
     this.selectedIcon,
     this.title,
     this.content,
@@ -18,7 +18,7 @@ class SfAccordion extends StatefulWidget {
     this.width,
     this.titleWidth,
   });
-  final Widget defaultIcon;
+  final Widget? defaultIcon;
   final Widget? selectedIcon;
   final Widget? title;
   final Widget? content;
@@ -61,8 +61,8 @@ class _AccordionState extends State<SfAccordion> {
         child: widget.content!,
       );
     }
-
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -73,12 +73,12 @@ class _AccordionState extends State<SfAccordion> {
                   setState(() {});
                 },
                 child: isVisible
-                    ? widget.selectedIcon ?? widget.defaultIcon
-                    : widget.defaultIcon),
+                    ? widget.selectedIcon ?? const Icon(Icons.arrow_drop_down)
+                    : widget.defaultIcon ?? const Icon(Icons.play_arrow)),
             const SizedBox(width: 5),
             SizedBox(
                 width: widget.titleWidth ??
-                    MediaQuery.of(context).size.width * 0.85,
+                    MediaQuery.of(context).size.width * 0.84,
                 child: titleText),
           ],
         ),
