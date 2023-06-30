@@ -8,8 +8,8 @@ class SfacIcon{
   //레고 아이콘
   static Widget block({double width = 24.0,double height = 24.0}) => SfacIconWidget('block', width: width,height: height);
 
-  //
-  static Widget coberbox({double width = 24.0,double height = 24.0}) => SfacIconWidget('coberbox', width: width,height: height);
+  //unfold more 아이콘(위,아래 화살표 아이콘)
+  static Widget coverbox({double width = 24.0,double height = 24.0}) => SfacIconWidget('coverbox', width: width,height: height);
 
   //다트아이콘
   static Widget dart({double width = 24.0,double height = 24.0}) => SfacIconWidget('dart', width: width,height: height);
@@ -23,11 +23,11 @@ class SfacIcon{
   //그래프 아이콘
   static Widget graph({double width = 24.0,double height = 24.0}) => SfacIconWidget('graph', width: width,height: height);
 
-  //
-  static Widget group427321414({double width = 24.0,double height = 24.0}) => SfacIconWidget('group427321414', width: width,height: height);
+  //축소 아이콘
+  static Widget reduce({double width = 24.0,double height = 24.0}) => SfacIconWidget('reduce', width: width,height: height);
 
-  //
-  static Widget group427321415({double width = 24.0,double height = 24.0}) => SfacIconWidget('roup427321415', width: width,height: height);
+  //확장 아이콘
+  static Widget expand({double width = 24.0,double height = 24.0}) => SfacIconWidget('expand', width: width,height: height);
   
   //천사링 모양? 아이콘
   static Widget halo({double width = 24.0,double height = 24.0}) => SfacIconWidget('halo', width: width,height: height);
