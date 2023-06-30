@@ -2,40 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
-class Accordion extends StatefulWidget {
-  const Accordion({
+class SfAccordion extends StatefulWidget {
+  const SfAccordion({
     super.key,
-    required this.defaultIcon,
+    this.defaultIcon,
     this.selectedIcon,
     this.title,
     this.content,
-    this.contentBackgroundColor = SfacColor.grayScale5,
+    this.contentBackgroundColor,
     this.contentRadius = 10,
     this.titleTextStyle,
     this.contentTextStyle,
-    this.contentPaddingvertical = 5,
-    this.contentPaddingHorizontal = 10,
-    this.contentMargin = 15,
+    this.contentPadding,
+    this.contentMargin,
     this.width,
+    this.titleWidth,
   });
-  final Widget defaultIcon;
+  final Widget? defaultIcon;
   final Widget? selectedIcon;
   final Widget? title;
   final Widget? content;
-  final Color contentBackgroundColor;
+  final Color? contentBackgroundColor;
   final double contentRadius;
   final TextStyle? titleTextStyle;
   final TextStyle? contentTextStyle;
-  final double contentPaddingvertical;
-  final double contentPaddingHorizontal;
-  final double contentMargin;
+  final EdgeInsetsGeometry? contentPadding;
+  final EdgeInsetsGeometry? contentMargin;
   final double? width;
+  final double? titleWidth;
 
   @override
-  State<Accordion> createState() => _AccordionState();
+  State<SfAccordion> createState() => _AccordionState();
 }
 
-class _AccordionState extends State<Accordion> {
+class _AccordionState extends State<SfAccordion> {
   bool isVisible = false;
   @override
   Widget build(BuildContext context) {
@@ -61,41 +61,40 @@ class _AccordionState extends State<Accordion> {
         child: widget.content!,
       );
     }
-
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        FittedBox(
-          fit: BoxFit.fitWidth,
-          child: Row(
-            children: [
-              GestureDetector(
-                  onTap: () {
-                    isVisible = !isVisible;
-                    setState(() {});
-                  },
-                  child: isVisible
-                      ? widget.selectedIcon ?? widget.defaultIcon
-                      : widget.defaultIcon),
-              const SizedBox(width: 10),
-              SizedBox(
-                  width: widget.width ?? MediaQuery.of(context).size.width * 0.88,
-                  child: titleText),
-            ],
-          ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            GestureDetector(
+                onTap: () {
+                  isVisible = !isVisible;
+                  setState(() {});
+                },
+                child: isVisible
+                    ? widget.selectedIcon ?? const Icon(Icons.arrow_drop_down)
+                    : widget.defaultIcon ?? const Icon(Icons.play_arrow)),
+            const SizedBox(width: 5),
+            SizedBox(
+                width: widget.titleWidth ??
+                    MediaQuery.of(context).size.width * 0.84,
+                child: titleText),
+          ],
         ),
         isVisible
             ? Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: widget.contentPaddingvertical,
-                    horizontal: widget.contentPaddingHorizontal),
+                padding: widget.contentPadding ??
+                    const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                 child: Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: widget.width ?? MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                      color: widget.contentBackgroundColor,
+                      color:
+                          widget.contentBackgroundColor ?? SfacColor.grayScale5,
                       borderRadius: BorderRadius.all(
                           Radius.circular(widget.contentRadius))),
                   child: Padding(
-                      padding: EdgeInsets.all(widget.contentMargin),
+                      padding: widget.contentMargin ?? const EdgeInsets.all(15),
                       child: contentText),
                 ),
               )
