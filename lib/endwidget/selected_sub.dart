@@ -5,7 +5,7 @@ import 'package:widgets/util/sfac_text_style.dart';
 class SfSelectedSub extends StatefulWidget {
   const SfSelectedSub({
     super.key,
-    required this.text,
+    required this.menu,
     this.width,
     required this.height,
     this.focusedColor,
@@ -13,8 +13,9 @@ class SfSelectedSub extends StatefulWidget {
     this.direction = Axis.vertical,
     this.onTap,
     this.margin,
+    this.physics,
   });
-  final List<String> text;
+  final List<String> menu;
   final double? width;
   final double height;
   final Color? focusedColor;
@@ -22,6 +23,7 @@ class SfSelectedSub extends StatefulWidget {
   final Axis direction;
   final Function(int)? onTap;
   final EdgeInsetsGeometry? margin;
+  final ScrollPhysics? physics;
 
   @override
   State<SfSelectedSub> createState() => _SelectedSubState();
@@ -35,8 +37,9 @@ class _SelectedSubState extends State<SfSelectedSub> {
       width: widget.width,
       height: widget.height,
       child: ListView.builder(
+        physics: widget.physics ?? const NeverScrollableScrollPhysics(),
         scrollDirection: widget.direction,
-        itemCount: widget.text.length,
+        itemCount: widget.menu.length,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () {
             if (widget.onTap != null) {
@@ -48,7 +51,7 @@ class _SelectedSubState extends State<SfSelectedSub> {
           child: Padding(
             padding: widget.margin ?? const EdgeInsets.all(8.0),
             child: Text(
-              widget.text[index],
+              widget.menu[index],
               style: SfacTextStyle.b4R14(
                   color: focusedChild == index
                       ? widget.focusedColor ?? SfacColor.primary80

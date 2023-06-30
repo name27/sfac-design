@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
+import 'package:widgets/util/sfac_text_style.dart';
 
 class SfBadge extends StatelessWidget {
   const SfBadge({
@@ -10,21 +11,28 @@ class SfBadge extends StatelessWidget {
     this.borderRadius = 4,
     this.width,
     this.height,
-    this.verticalMargin = 5,
-    this.horizontalMargin = 8,
+    this.margin,
   });
-
   final Widget? child;
   final Color? backgroundColor;
   final Color? outlineColor;
   final double borderRadius;
   final double? width;
   final double? height;
-  final double verticalMargin;
-  final double horizontalMargin;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {
+    Widget? childText;
+    TextStyle? childStyle;
+    if (child != null) {
+      childStyle = SfacTextStyle.b5R12(color: SfacColor.grayScale60);
+      childText = AnimatedDefaultTextStyle(
+        style: childStyle,
+        duration: kThemeChangeDuration,
+        child: child!,
+      );
+    }
     return Container(
       width: width,
       height: height,
@@ -33,10 +41,9 @@ class SfBadge extends StatelessWidget {
           border: Border.all(color: outlineColor ?? SfacColor.grayScale5),
           borderRadius: BorderRadius.circular(borderRadius)),
       child: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: verticalMargin, horizontal: horizontalMargin),
-        child: child,
-      ),
+          padding:
+              margin ?? const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
+          child: childText),
     );
   }
 }

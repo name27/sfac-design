@@ -15,6 +15,7 @@ class SfSelectedMain extends StatefulWidget {
     this.direction = Axis.vertical,
     this.onTap,
     this.margin,
+    this.physics,
   });
   final List<Widget> children;
   final double? width;
@@ -27,6 +28,7 @@ class SfSelectedMain extends StatefulWidget {
   final Axis direction;
   final Function(int)? onTap;
   final EdgeInsetsGeometry? margin;
+  final ScrollPhysics? physics;
 
   @override
   State<SfSelectedMain> createState() => _SelectedMainState();
@@ -40,6 +42,7 @@ class _SelectedMainState extends State<SfSelectedMain> {
       width: widget.width,
       height: widget.height,
       child: ListView.builder(
+        physics: widget.physics ?? const NeverScrollableScrollPhysics(),
         scrollDirection: widget.direction,
         itemCount: widget.children.length,
         itemBuilder: (context, index) => GestureDetector(
@@ -53,7 +56,7 @@ class _SelectedMainState extends State<SfSelectedMain> {
           child: Container(
             decoration: BoxDecoration(
                 color: focusedChild == index
-                    ? widget.focusedBackgroundColor ?? SfacColor.primary5
+                    ? widget.focusedBackgroundColor ?? SfacColor.primary10
                     : widget.backgroundColor,
                 border: Border.all(
                     width: widget.outlineWidth ?? 0,
