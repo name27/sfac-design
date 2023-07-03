@@ -62,10 +62,12 @@ class _SfAccordionState extends State<SfAccordion> {
       );
     }
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GestureDetector(
                 onTap: () {

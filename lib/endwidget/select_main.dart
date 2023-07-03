@@ -16,8 +16,9 @@ class SfSelectedMain extends StatefulWidget {
     this.onTap,
     this.margin,
     this.physics,
+    this.heightSpacing,
   });
-  final List<Widget> children;
+  final List<Widget?> children;
   final double? width;
   final double height;
   final Color? backgroundColor;
@@ -29,6 +30,7 @@ class SfSelectedMain extends StatefulWidget {
   final Function(int)? onTap;
   final EdgeInsetsGeometry? margin;
   final ScrollPhysics? physics;
+  final double? heightSpacing;
 
   @override
   State<SfSelectedMain> createState() => _SelectedMainState();
@@ -45,28 +47,33 @@ class _SelectedMainState extends State<SfSelectedMain> {
         physics: widget.physics ?? const NeverScrollableScrollPhysics(),
         scrollDirection: widget.direction,
         itemCount: widget.children.length,
-        itemBuilder: (context, index) => GestureDetector(
-          onTap: () {
-            if (widget.onTap != null) {
-              widget.onTap!(index);
-            }
-            focusedChild = index;
-            setState(() {});
-          },
-          child: Container(
-            decoration: BoxDecoration(
-                color: focusedChild == index
-                    ? widget.focusedBackgroundColor ?? SfacColor.primary5
-                    : widget.backgroundColor,
-                border: Border.all(
-                    width: widget.outlineWidth ?? 0,
-                    color: widget.outlineColor ?? Colors.transparent),
-                borderRadius: BorderRadius.circular(widget.radius)),
-            child: Padding(
-              padding: widget.margin ?? const EdgeInsets.all(8.0),
-              child: widget.children[index],
+        itemBuilder: (context, index) => Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                if (widget.onTap != null) {
+                  widget.onTap!(index);
+                }
+                focusedChild = index;
+                setState(() {});
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    color: focusedChild == index
+                        ? widget.focusedBackgroundColor ?? SfacColor.primary5
+                        : widget.backgroundColor,
+                    border: Border.all(
+                        width: widget.outlineWidth ?? 0,
+                        color: widget.outlineColor ?? Colors.transparent),
+                    borderRadius: BorderRadius.circular(widget.radius)),
+                child: Padding(
+                  padding: widget.margin ?? const EdgeInsets.all(8.0),
+                  child: widget.children[index],
+                ),
+              ),
             ),
-          ),
+            SizedBox(height: widget.heightSpacing),
+          ],
         ),
       ),
     );
