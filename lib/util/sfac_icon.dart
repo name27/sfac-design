@@ -1,64 +1,61 @@
-import 'package:flutter/material.dart';
-import 'package:widgets/widget/icon.dart';
-
 class SfacIcon{
   //뒤로가기 아이콘
-  static Widget backarrow({double width = 24.0,double height = 24.0}) => SfacIconWidget('backarrow', width: width,height: height);
+  static const String backarrow = 'backarrow';
 
   //레고 아이콘
-  static Widget block({double width = 24.0,double height = 24.0}) => SfacIconWidget('block', width: width,height: height);
+  static const String block = 'block';
 
   //unfold more 아이콘(위,아래 화살표 아이콘)
-  static Widget coverbox({double width = 24.0,double height = 24.0}) => SfacIconWidget('coverbox', width: width,height: height);
+  static const String coverbox = 'coverbox';
 
   //다트아이콘
-  static Widget dart({double width = 24.0,double height = 24.0}) => SfacIconWidget('dart', width: width,height: height);
+  static const String dart = 'dart';
 
   //불 아이콘
-  static Widget fire({double width = 24.0,double height = 24.0}) =>SfacIconWidget('fire', width: width,height: height);
+  static const String fire = 'fire';
 
   //게임패드 아이콘
-  static Widget gamepad({double width = 24.0,double height = 24.0}) => SfacIconWidget('gamepad', width: width,height: height);
+  static const String gamepad = 'gamepad';
 
-  //그래프 아이콘
-  static Widget graph({double width = 24.0,double height = 24.0}) => SfacIconWidget('graph', width: width,height: height);
+  //BigData 아이콘
+  static const String graph = 'graph';
 
   //축소 아이콘
-  static Widget reduce({double width = 24.0,double height = 24.0}) => SfacIconWidget('reduce', width: width,height: height);
+  static const String reduce = 'reduce';
 
   //확장 아이콘
-  static Widget expand({double width = 24.0,double height = 24.0}) => SfacIconWidget('expand', width: width,height: height);
-  
-  //천사링 모양? 아이콘
-  static Widget halo({double width = 24.0,double height = 24.0}) => SfacIconWidget('halo', width: width,height: height);
-  
+  static const String expand = 'expand';
+
+  //천사링? 아이콘
+  static const String halo = 'halo';
+
   //손 흔드는 아이콘
-  static Widget hand({double width = 24.0,double height = 24.0}) =>SfacIconWidget('hand', width: width,height: height);
-  
+  static const String hand = 'hand';
+
   //사람이 O그린 아이콘
-  static Widget imojiO({double width = 24.0,double height = 24.0}) => SfacIconWidget('imojiO', width: width,height: height);
-  
+  static const String imojiO = 'imojiO';
+
   //사람이 X그린 아이콘
-  static Widget imojiX({double width = 24.0,double height = 24.0}) => SfacIconWidget('imojiX', width: width,height: height);
-  
+  static const String imojiX = 'imojiX';
+
   //노트북 아이콘
-  static Widget laptop({double width = 24.0,double height = 24.0}) => SfacIconWidget('laptop', width: width,height: height);
-  
+  static const String laptop = 'laptop';
+
   //자물쇠 아이콘
-  static Widget lock({double width = 24.0,double height = 24.0}) => SfacIconWidget('lock', width: width,height: height);
-  
-  //팔레트 아이콘
-  static Widget palette({double width = 24.0,double height = 24.0}) => SfacIconWidget('palette', width: width,height: height);
-  
+  static const String lock = 'lock';
+
+  //UI/UX 아이콘
+  static const String palette = 'palette';
+
   //폰 아이콘
-  static Widget phone({double width = 24.0,double height = 24.0}) => SfacIconWidget('phone', width: width,height: height);
-  
+  static const String phone = 'phone';
+
   //되감기 아이콘
-  static Widget rewind({double width = 24.0,double height = 24.0}) => SfacIconWidget('rewind', width: width,height: height);
-  
-  //로봇머리 아이콘
-  static Widget robot({double width = 24.0,double height = 24.0}) => SfacIconWidget('robot', width: width,height: height);
-  
+  static const String rewind = 'rewind';
+
+  //AI 로봇 아이콘
+  static const String robot = 'robot';
+
   //스피커 아이콘
-  static Widget speaker({double width = 24.0,double height = 24.0}) => SfacIconWidget('speaker', width: width,height: height);
+  static const String speaker = 'speaker';
 }

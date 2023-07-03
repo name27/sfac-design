@@ -1,4 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:widgets/endwidget/badge.dart';
+import 'package:widgets/util/sfac_color.dart';
+import 'package:widgets/util/sfac_icon.dart';
+import 'package:widgets/util/sfac_text_style.dart';
+import 'package:widgets/widget/icon.dart';
+import 'package:widgets/widget/input.dart';
+import 'package:widgets/widget/search_field.dart';
+import 'package:widgets/widget/textarea.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgets/endwidget/accordion.dart';
 import 'package:widgets/endwidget/avatar.dart';
@@ -17,7 +25,6 @@ import 'package:widgets/endwidget/breadcrumb.dart';
 import 'package:widgets/endwidget/combo_box.dart';
 import 'package:widgets/widget/input.dart';
 import 'package:widgets/widget/search_field.dart';
-
 void main() {
   runApp(const MyApp());
 }
@@ -37,6 +44,9 @@ class MyApp extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SfacInput(inputContent: Text('Input',style: SfacTextStyle.b4B14(color: SfacColor.primary80),),hintText: 'Input(텍스트필드)', controller: TextEditingController(),helperText: '나 Input(텍스트필드)',),
+                  const Divider(
+                    thickness: 3),
                   ComboBox(
                     width: 250,
                     height: 250,
@@ -149,40 +159,45 @@ class MyApp extends StatelessWidget {
                   const SizedBox(height: 10),
                   Wrap(
                     children: [
-                      SfacIcon.dart(),
-                      SfacIcon.phone(),
-                      SfacIcon.laptop(),
-                      SfacIcon.palette(),
-                      SfacIcon.lock(),
-                      SfacIcon.graph(),
-                      SfacIcon.robot(),
-                      SfacIcon.gamepad(),
-                      SfacIcon.imojiO(),
-                      SfacIcon.imojiX(),
-                      SfacIcon.halo(),
-                      SfacIcon.speaker(),
-                      SfacIcon.fire(),
-                      SfacIcon.hand(),
-                      SfacIcon.coverbox(),
-                      SfacIcon.block(),
+                      Icon(Icons.lock_clock),
+                      SFIcon(SfacIcon.dart,size: 50),
+                      SFIcon(SfacIcon.phone),
+                      SFIcon(SfacIcon.laptop),
+                      SFIcon(SfacIcon.palette),
+                      SFIcon(SfacIcon.lock),
+                      SFIcon(SfacIcon.graph),
+                      SFIcon(SfacIcon.robot),
+                      SFIcon(SfacIcon.gamepad),
+                      SFIcon(SfacIcon.imojiO),
+                      SFIcon(SfacIcon.imojiX),
+                      SFIcon(SfacIcon.halo),
+                      SFIcon(SfacIcon.speaker),
+                      SFIcon(SfacIcon.fire),
+                      SFIcon(SfacIcon.hand),
+                      SFIcon(SfacIcon.coverbox),
+                      SFIcon(SfacIcon.block),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SfacIcon.rewind(),
+                        padding: EdgeInsets.all(8.0),
+                        child: SFIcon(SfacIcon.rewind),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SfacIcon.reduce(),
+                        padding: EdgeInsets.all(8.0),
+                        child: SFIcon(SfacIcon.reduce),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SfacIcon.expand(),
+                        padding: EdgeInsets.all(8.0),
+                        child: SFIcon(SfacIcon.coverbox),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SfacIcon.backarrow(),
+                        padding: EdgeInsets.all(8.0),
+                        child: SFIcon(SfacIcon.expand),
                       )
                     ],
                   ),
+                  Divider(
+                    thickness: 3,
+                  ),
+                  SFTextArea(controller: TextEditingController(), hintText: '내용을 입력해주세요', maxLines: 2, minLines: 2, writer: '신승호',)
                   const SizedBox(height: 10),
                   const Divider(thickness: 5),
                   const SizedBox(height: 10),
