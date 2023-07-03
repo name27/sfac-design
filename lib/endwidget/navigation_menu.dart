@@ -1,27 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
+import 'package:widgets/util/sfac_text_style.dart';
 
-class SfSelectedMain extends StatefulWidget {
-  const SfSelectedMain({
+class SfNavigationMenu extends StatefulWidget {
+  const SfNavigationMenu({
     super.key,
-    required this.children,
+    required this.menu,
     this.width,
     required this.height,
     this.backgroundColor,
     this.focusedBackgroundColor,
+    this.defaultMenuColor,
+    this.focusedMenuColor,
     this.outlineColor,
     this.radius = 10,
     this.outlineWidth,
-    this.direction = Axis.vertical,
+    this.direction = Axis.horizontal,
     this.onTap,
     this.margin,
     this.physics,
   });
-  final List<Widget> children;
+  final List<String> menu;
   final double? width;
   final double height;
   final Color? backgroundColor;
   final Color? focusedBackgroundColor;
+  final Color? defaultMenuColor;
+  final Color? focusedMenuColor;
   final Color? outlineColor;
   final double radius;
   final double? outlineWidth;
@@ -31,10 +36,10 @@ class SfSelectedMain extends StatefulWidget {
   final ScrollPhysics? physics;
 
   @override
-  State<SfSelectedMain> createState() => _SelectedMainState();
+  State<SfNavigationMenu> createState() => _SfNavigationMenu();
 }
 
-class _SelectedMainState extends State<SfSelectedMain> {
+class _SfNavigationMenu extends State<SfNavigationMenu> {
   int focusedChild = 0;
   @override
   Widget build(BuildContext context) {
@@ -44,7 +49,7 @@ class _SelectedMainState extends State<SfSelectedMain> {
       child: ListView.builder(
         physics: widget.physics ?? const NeverScrollableScrollPhysics(),
         scrollDirection: widget.direction,
-        itemCount: widget.children.length,
+        itemCount: widget.menu.length,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () {
             if (widget.onTap != null) {
@@ -63,8 +68,14 @@ class _SelectedMainState extends State<SfSelectedMain> {
                     color: widget.outlineColor ?? Colors.transparent),
                 borderRadius: BorderRadius.circular(widget.radius)),
             child: Padding(
-              padding: widget.margin ?? const EdgeInsets.all(8.0),
-              child: widget.children[index],
+              padding: widget.margin ?? const EdgeInsets.all(12.0),
+              child: Text(
+                widget.menu[index],
+                style: SfacTextStyle.b3M16(
+                    color: focusedChild == index
+                        ? widget.focusedMenuColor ?? SfacColor.primary80
+                        : widget.defaultMenuColor ?? Colors.black),
+              ),
             ),
           ),
         ),

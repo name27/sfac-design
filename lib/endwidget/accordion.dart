@@ -32,10 +32,10 @@ class SfAccordion extends StatefulWidget {
   final double? titleWidth;
 
   @override
-  State<SfAccordion> createState() => _AccordionState();
+  State<SfAccordion> createState() => _SfAccordionState();
 }
 
-class _AccordionState extends State<SfAccordion> {
+class _SfAccordionState extends State<SfAccordion> {
   bool isVisible = false;
   @override
   Widget build(BuildContext context) {
