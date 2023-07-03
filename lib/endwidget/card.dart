@@ -1,26 +1,61 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
+import 'package:widgets/util/sfac_text_style.dart';
 
 class SfCard extends StatelessWidget {
   const SfCard(
       {super.key,
-      this.child,
       this.outlineWidth = 1.0,
       this.outlineRadius = 10,
       this.outlineColor,
-      this.margin = 10,
+      this.margin = 20,
       this.width,
-      this.height});
-  final Widget? child;
+      this.height,
+      this.title,
+      this.subtitle,
+      this.left,
+      this.ritht,
+      this.top,
+      this.bottom,
+      this.heightSpacing = 10,
+      this.widthSpacing = 20});
+  final Widget? title;
+  final Widget? subtitle;
+  final Widget? left;
+  final Widget? ritht;
+  final Widget? top;
+  final Widget? bottom;
   final double outlineWidth;
   final double outlineRadius;
   final Color? outlineColor;
   final double margin;
   final double? width;
   final double? height;
+  final double heightSpacing;
+  final double widthSpacing;
 
   @override
   Widget build(BuildContext context) {
+    Widget? titleText;
+    TextStyle? titleStyle;
+    if (title != null) {
+      titleStyle = SfacTextStyle.b3M16(color: SfacColor.grayScale100);
+      titleText = AnimatedDefaultTextStyle(
+        style: titleStyle,
+        duration: kThemeChangeDuration,
+        child: title!,
+      );
+    }
+    Widget? subtitleText;
+    TextStyle? subtitleStyle;
+    if (subtitle != null) {
+      subtitleStyle = SfacTextStyle.b3R16(color: SfacColor.grayScale60);
+      subtitleText = AnimatedDefaultTextStyle(
+        style: subtitleStyle,
+        duration: kThemeChangeDuration,
+        child: subtitle!,
+      );
+    }
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(outlineRadius),
@@ -30,7 +65,34 @@ class SfCard extends StatelessWidget {
           )),
       child: Padding(
         padding: EdgeInsets.all(margin),
-        child: SizedBox(width: width, height: height, child: child),
+        child: SizedBox(
+            width: width,
+            height: height,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                left ?? const SizedBox(),
+                SizedBox(width: left != null ? widthSpacing : 0),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      top ?? const SizedBox(),
+                      SizedBox(height: top != null ? heightSpacing : 0),
+                      titleText ?? const SizedBox(),
+                      SizedBox(height: titleText != null ? heightSpacing : 0),
+                      subtitleText ?? const SizedBox(),
+                      SizedBox(
+                          height: subtitleText != null ? heightSpacing : 0),
+                      bottom ?? const SizedBox(),
+                    ],
+                  ),
+                ),
+                ritht ?? const SizedBox(),
+                SizedBox(width: ritht != null ? widthSpacing : 0),
+              ],
+            )),
       ),
     );
   }

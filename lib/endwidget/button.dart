@@ -30,10 +30,10 @@ class SfButton extends StatefulWidget {
   final double radius;
 
   @override
-  State<SfButton> createState() => _ButtonState();
+  State<SfButton> createState() => _SfButtonState();
 }
 
-class _ButtonState extends State<SfButton> {
+class _SfButtonState extends State<SfButton> {
   @override
   Widget build(BuildContext context) {
     Widget? childText;

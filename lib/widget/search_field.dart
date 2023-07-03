@@ -3,14 +3,14 @@ import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
 class SfacSearchField extends StatelessWidget {
-  const SfacSearchField({super.key,
-  required this.controller,
-  required this.hintText,
-  this.onchanged,
-  this.onSubmitted,
-  required this.outlineWidth
-  });
-  
+  const SfacSearchField(
+      {super.key,
+      required this.controller,
+      required this.hintText,
+      this.onchanged,
+      this.onSubmitted,
+      required this.outlineWidth});
+
   final TextEditingController controller;
   //힌트텍스트
   final String hintText;
@@ -26,15 +26,19 @@ class SfacSearchField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         filled: true,
-          fillColor: Colors.transparent,
-          hintText: hintText,
-          hintStyle: SfacTextStyle.b4R14(color: SfacColor.grayScale20),
+        fillColor: Colors.transparent,
+        hintText: hintText,
+        hintStyle: SfacTextStyle.b4R14(color: SfacColor.grayScale20),
         suffixIcon: Icon(Icons.search),
-        focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: SfacColor.primary30,width: 2),borderRadius: BorderRadius.all(Radius.circular(10))),
-        enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: SfacColor.grayScale20),borderRadius: BorderRadius.all(Radius.circular(10))),
-        ),
-        onChanged: onchanged,
-        onSubmitted: onSubmitted,
+        focusedBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: SfacColor.primary30, width: 2),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: SfacColor.grayScale20),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+      ),
+      onChanged: onchanged,
+      onSubmitted: onSubmitted,
     );
   }
 }

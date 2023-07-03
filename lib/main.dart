@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:widgets/endwidget/accordion.dart';
 import 'package:widgets/endwidget/avatar.dart';
 import 'package:widgets/endwidget/badge.dart';
 import 'package:widgets/endwidget/button.dart';
 import 'package:widgets/endwidget/card.dart';
 import 'package:widgets/endwidget/image_card.dart';
+import 'package:widgets/endwidget/navigation_menu.dart';
 import 'package:widgets/endwidget/select_main.dart';
 import 'package:widgets/endwidget/selected_sub.dart';
 import 'package:widgets/endwidget/tap.dart';
@@ -27,9 +29,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar:AppBar(
-          title: const Text('테스트중'),
-        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
@@ -37,63 +36,66 @@ class MyApp extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SfacInput(inputContent: Text('Input',style: SfacTextStyle.b4B14(color: SfacColor.primary80),),hintText: 'Input(텍스트필드)', controller: TextEditingController(),helperText: '나 Input(텍스트필드)',),
-                  const Divider(
-                    thickness: 3,
+                  Text('Input', style: SfacTextStyle.b1B20()),
+                  const SizedBox(height: 10),
+                  SfacInput(
+                    inputContent: Text(
+                      'Input',
+                      style: SfacTextStyle.b4B14(color: SfacColor.primary80),
+                    ),
+                    hintText: 'Input(텍스트필드)',
+                    controller: TextEditingController(),
+                    helperText: '나 Input(텍스트필드)',
                   ),
+                  const SizedBox(height: 10),
+                  const Divider(thickness: 5),
+                  const SizedBox(height: 10),
+                  Text('Searchfield', style: SfacTextStyle.b1B20()),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: SfacSearchField(controller: TextEditingController(), hintText: 'Search용 텍스트필드', outlineWidth: 2),
+                    child: SfacSearchField(
+                        controller: TextEditingController(),
+                        hintText: 'Search용 텍스트필드',
+                        outlineWidth: 2),
                   ),
-                  const Divider(
-                    thickness: 3,
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SfBadge(child: Text('추워', style: SfacTextStyle.b5R12(color: Colors.white),),backgroundColor: SfacColor.primary80,),
+                  const SizedBox(height: 10),
+                  const Divider(thickness: 5),
+                  const SizedBox(height: 10),
+                  Text('Badge', style: SfacTextStyle.b1B20()),
+                  const SizedBox(height: 10),
+                  Wrap(
+                    spacing: 8,
+                    children: [
+                      SfBadge(
+                        backgroundColor: SfacColor.primary80,
+                        child: Text(
+                          '무료강의',
+                          style: SfacTextStyle.b5R12(color: Colors.white),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SfBadge(child: Text('추워요'),),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SfBadge(child: Text('겨울왕국', style: SfacTextStyle.b5R12(color: SfacColor.primary60)),outlineColor: SfacColor.primary40, backgroundColor: SfacColor.primary5,),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SfBadge(child: Text('똑똑똑엘사?', style: SfacTextStyle.b5R12(color: Colors.white)), backgroundColor: SfacColor.red,),
-                        )
-                        // Padding(
-                        //   padding: EdgeInsets.all(8.0),
-                        //   child: SfacBadge(keyWord: '추워'),
-                        // ),
-                        // Padding(
-                        //   padding: EdgeInsets.all(8.0),
-                        //   child: SfacBadge(keyWord: '추워요',keyWordColor: SfacColor.grayScale60, backgroundColor: SfacColor.grayScale5,),
-                        // ),
-                        // Padding(
-                        //   padding: EdgeInsets.all(8.0),
-                        //   child: SfacBadge(keyWord: '겨울왕국',keyWordColor: SfacColor.primary60,backgroundColor: SfacColor.grayScale5,outlineColor: SfacColor.primary40,),
-                        // ),
-                        // Padding(
-                        //   padding: EdgeInsets.all(8.0),
-                        //   child: SfacBadge(keyWord: '똑똑똑엘사?',backgroundColor: SfacColor.red,),
-                        // ),
-                      ],
-                    ),
+                      ),
+                      const SfBadge(
+                        child: Text('무료강의'),
+                      ),
+                      SfBadge(
+                        outlineColor: SfacColor.primary40,
+                        backgroundColor: SfacColor.primary5,
+                        child: Text('무료강의',
+                            style: SfacTextStyle.b5R12(
+                                color: SfacColor.primary60)),
+                      ),
+                      SfBadge(
+                        backgroundColor: SfacColor.red,
+                        child: Text('무료강의?',
+                            style: SfacTextStyle.b5R12(color: Colors.white)),
+                      )
+                    ],
                   ),
-                  const Divider(
-                    thickness: 3,
-                  ),
-                // Keyword(keyword: [Text('안녕'),Text('키워드')]),
-                  Divider(
-                    thickness: 3,
-                  ),
+                  const SizedBox(height: 10),
+                  const Divider(thickness: 5),
+                  const SizedBox(height: 10),
+                  Text('Icons', style: SfacTextStyle.b1B20()),
+                  const SizedBox(height: 10),
                   Wrap(
                     children: [
                       SfacIcon.dart(),
@@ -130,9 +132,11 @@ class MyApp extends StatelessWidget {
                       )
                     ],
                   ),
-                  Divider(
-                    thickness: 3,
-                  ),
+                  const SizedBox(height: 10),
+                  const Divider(thickness: 5),
+                  const SizedBox(height: 10),
+                  Text('Button', style: SfacTextStyle.b1B20()),
+                  const SizedBox(height: 10),
                   Text(
                     'Primary',
                     style: SfacTextStyle.b1B20(),
@@ -213,16 +217,18 @@ class MyApp extends StatelessWidget {
                         },
                         children: [
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              const SizedBox(width: 20),
                               SfacIcon.dart(),
+                              const SizedBox(width: 18),
                               const Text('커뮤니티 전체'),
                             ],
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              const SizedBox(width: 20),
                               SfacIcon.dart(),
+                              const SizedBox(width: 18),
                               const Text('커뮤니티 전체'),
                             ],
                           )
@@ -283,6 +289,20 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 15),
+                  SfCard(
+                    width: 350,
+                    left: SfImageCard(
+                      image: Image.network(
+                        'https://picsum.photos/100/120',
+                        width: 100,
+                        height: 120,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    title: Text('AI 서비스 완성! AI 웹 개발 취업 캠프(프론트엔드&백엔드)'),
+                    subtitle: Text(
+                        '하루만에 살펴보는 전문가 1인창업 및 기술 사업화에 필요한 사업계획서 작성방법,알아볼까요?'),
+                  ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
                     child: Row(children: [
@@ -387,108 +407,170 @@ class MyApp extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   SfCard(
-                    width: 300, // 넓이 조절
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    width: 350,
+                    top: Row(
                       children: [
-                        Row(
-                          children: [
-                            SfAvatar(
-                              size: 30,
-                              child: SvgPicture.asset('assets/svg/logo.svg'),
-                            ),
-                            const SizedBox(width: 5),
-                            Text(
-                              '스나이퍼팩토리',
-                              style: SfacTextStyle.b5B12(
-                                  color: SfacColor.primary60),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.circle,
-                                size: 5,
-                                color: SfacColor.grayScale60,
-                              ),
-                            ),
-                            Text(
-                              '매니저',
-                              style: SfacTextStyle.b5M12(
-                                  color: SfacColor.grayScale60),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.circle,
-                                size: 5,
-                                color: SfacColor.grayScale60,
-                              ),
-                            ),
-                            Text(
-                              '2023/08/28',
-                              style: SfacTextStyle.b5M12(
-                                  color: SfacColor.grayScale60),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 5),
-                        const SfTitleSubtitle(
-                            title:
-                                'Lorem Ipsum is simply dummy text of the printing',
-                            subtitle:
-                                '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remainin...'''),
-                        const SizedBox(height: 5),
-                        Wrap(
-                            spacing: 3,
-                            children: ['무료강의', 'KITRI', '사업계획서', '모집중']
-                                .map((e) => SfBadge(
-                                      child: Text(e),
-                                    ))
-                                .toList()),
-                        const SizedBox(height: 5),
-                        const Text('댓글 0개'),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  SfCard(
-                    height: 100,
-                    child: Row(
-                      children: [
-                        SfImageCard(
-                          image: Image.network(
-                            'https://picsum.photos/250/200',
-                            fit: BoxFit.cover,
-                            width: 90,
-                            height: 100,
-                          ),
+                        SfAvatar(
+                          size: 30,
+                          child: SvgPicture.asset('assets/svg/logo.svg'),
                         ),
                         const SizedBox(width: 5),
-                        const Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SfBadge(child: Text('07분분')),
-                            SfTitleSubtitle(
-                              title: '[DAY1] 1 프런트엔드와 백엔드',
-                              subtitle: '[수강기간]\n2023.03.03~2023.12.12',
-                              spaceing: 15,
-                            )
-                          ],
+                        Text(
+                          '스나이퍼팩토리',
+                          style:
+                              SfacTextStyle.b5B12(color: SfacColor.primary60),
                         ),
-                        const Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(),
-                            SfBadge(
-                              margin: EdgeInsets.symmetric(
-                                  horizontal: 15, vertical: 5),
-                              child: Text('수강하기'),
-                            )
-                          ],
-                        )
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.circle,
+                            size: 5,
+                            color: SfacColor.grayScale60,
+                          ),
+                        ),
+                        Text(
+                          '매니저',
+                          style:
+                              SfacTextStyle.b5M12(color: SfacColor.grayScale60),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Icon(
+                            Icons.circle,
+                            size: 5,
+                            color: SfacColor.grayScale60,
+                          ),
+                        ),
+                        Text(
+                          '2023/08/28',
+                          style:
+                              SfacTextStyle.b5M12(color: SfacColor.grayScale60),
+                        ),
                       ],
                     ),
+                    title: const Text(
+                      'Lorem Ipsum is simply dummy text of the printing',
+                    ),
+                    subtitle: const Text(
+                        '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remainin...'''),
+                    bottom: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Wrap(
+                              spacing: 3,
+                              children: ['무료강의', 'KITRI', '사업계획서', '모집중']
+                                  .map((e) => SfBadge(
+                                        child: Text(e),
+                                      ))
+                                  .toList()),
+                          const SizedBox(height: 5),
+                          const Text('댓글 0개'),
+                        ]),
                   ),
+
+                  // SfCard(
+                  //   width: 300, // 넓이 조절
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //       Row(
+                  //         children: [
+                  //           SfAvatar(
+                  //             size: 30,
+                  //             child: SvgPicture.asset('assets/svg/logo.svg'),
+                  //           ),
+                  //           const SizedBox(width: 5),
+                  //           Text(
+                  //             '스나이퍼팩토리',
+                  //             style: SfacTextStyle.b5B12(
+                  //                 color: SfacColor.primary60),
+                  //           ),
+                  //           const Padding(
+                  //             padding: EdgeInsets.all(8.0),
+                  //             child: Icon(
+                  //               Icons.circle,
+                  //               size: 5,
+                  //               color: SfacColor.grayScale60,
+                  //             ),
+                  //           ),
+                  //           Text(
+                  //             '매니저',
+                  //             style: SfacTextStyle.b5M12(
+                  //                 color: SfacColor.grayScale60),
+                  //           ),
+                  //           const Padding(
+                  //             padding: EdgeInsets.all(8.0),
+                  //             child: Icon(
+                  //               Icons.circle,
+                  //               size: 5,
+                  //               color: SfacColor.grayScale60,
+                  //             ),
+                  //           ),
+                  //           Text(
+                  //             '2023/08/28',
+                  //             style: SfacTextStyle.b5M12(
+                  //                 color: SfacColor.grayScale60),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       const SizedBox(height: 5),
+                  //       const SfTitleSubtitle(
+                  //           title:
+                  //               'Lorem Ipsum is simply dummy text of the printing',
+                  //           subtitle:
+                  //               '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remainin...'''),
+                  //       const SizedBox(height: 5),
+                  //       Wrap(
+                  //           spacing: 3,
+                  //           children: ['무료강의', 'KITRI', '사업계획서', '모집중']
+                  //               .map((e) => SfBadge(
+                  //                     child: Text(e),
+                  //                   ))
+                  //               .toList()),
+                  //       const SizedBox(height: 5),
+                  //       const Text('댓글 0개'),
+                  //     ],
+                  //   ),
+                  // ),
+                  const SizedBox(height: 10),
+                  // SfCard(
+                  //   height: 100,
+                  //   child: Row(
+                  //     children: [
+                  //       SfImageCard(
+                  //         image: Image.network(
+                  //           'https://picsum.photos/250/200',
+                  //           fit: BoxFit.cover,
+                  //           width: 90,
+                  //           height: 100,
+                  //         ),
+                  //       ),
+                  //       const SizedBox(width: 5),
+                  //       const Column(
+                  //         crossAxisAlignment: CrossAxisAlignment.start,
+                  //         children: [
+                  //           SfBadge(child: Text('07분분')),
+                  //           SfTitleSubtitle(
+                  //             title: '[DAY1] 1 프런트엔드와 백엔드',
+                  //             subtitle: '[수강기간]\n2023.03.03~2023.12.12',
+                  //             spaceing: 15,
+                  //           )
+                  //         ],
+                  //       ),
+                  //       const Column(
+                  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //         children: [
+                  //           SizedBox(),
+                  //           SfBadge(
+                  //             margin: EdgeInsets.symmetric(
+                  //                 horizontal: 15, vertical: 5),
+                  //             child: Text('수강하기'),
+                  //           )
+                  //         ],
+                  //       )
+                  //     ],
+                  //   ),
+                  // ),
                   const SizedBox(height: 10),
                   const Divider(thickness: 5),
                   const SizedBox(height: 10),
@@ -500,6 +582,8 @@ class MyApp extends StatelessWidget {
                           .toList(),
                       height: 50),
                   const SizedBox(height: 10),
+                  const SfNavigationMenu(
+                      height: 50, menu: ['교육 과정', '공지 사항', '게시판'])
                 ],
               ),
             ),
