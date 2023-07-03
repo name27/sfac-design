@@ -10,7 +10,6 @@ import 'package:widgets/widget/textarea.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgets/endwidget/accordion.dart';
 import 'package:widgets/endwidget/avatar.dart';
-import 'package:widgets/endwidget/badge.dart';
 import 'package:widgets/endwidget/button.dart';
 import 'package:widgets/endwidget/card.dart';
 import 'package:widgets/endwidget/image_card.dart';
@@ -18,13 +17,8 @@ import 'package:widgets/endwidget/navigation_menu.dart';
 import 'package:widgets/endwidget/select_main.dart';
 import 'package:widgets/endwidget/selected_sub.dart';
 import 'package:widgets/endwidget/tap.dart';
-import 'package:widgets/util/sfac_color.dart';
-import 'package:widgets/util/sfac_icon.dart';
-import 'package:widgets/util/sfac_text_style.dart';
 import 'package:widgets/endwidget/breadcrumb.dart';
 import 'package:widgets/endwidget/combo_box.dart';
-import 'package:widgets/widget/input.dart';
-import 'package:widgets/widget/search_field.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -53,45 +47,45 @@ class MyApp extends StatelessWidget {
                     onTap: (p0) {
                       print(p0);
                     },
-                    children: [
+                    children: const [
                       Row(
                         children: [
-                          const SizedBox(width: 20),
-                          SfacIcon.dart(),
-                          const SizedBox(width: 18),
-                          const Text('커뮤니티 전체'),
+                          SizedBox(width: 20),
+                          SFIcon(SfacIcon.dart),
+                          SizedBox(width: 18),
+                          Text('커뮤니티 전체'),
                         ],
                       ),
                       Row(
                         children: [
-                          const SizedBox(width: 20),
-                          SfacIcon.dart(),
-                          const SizedBox(width: 18),
-                          const Text('커뮤니티 전체'),
+                          SizedBox(width: 20),
+                          SFIcon(SfacIcon.dart),
+                          SizedBox(width: 18),
+                          Text('커뮤니티 전체'),
                         ],
                       ),
                       Row(
                         children: [
-                          const SizedBox(width: 20),
-                          SfacIcon.dart(),
-                          const SizedBox(width: 18),
-                          const Text('커뮤니티 전체'),
+                          SizedBox(width: 20),
+                          SFIcon(SfacIcon.dart),
+                          SizedBox(width: 18),
+                          Text('커뮤니티 전체'),
                         ],
                       ),
                       Row(
                         children: [
-                          const SizedBox(width: 20),
-                          SfacIcon.dart(),
-                          const SizedBox(width: 18),
-                          const Text('커뮤니티 전체'),
+                          SizedBox(width: 20),
+                          SFIcon(SfacIcon.dart),
+                          SizedBox(width: 18),
+                          Text('커뮤니티 전체'),
                         ],
                       ),
                       Row(
                         children: [
-                          const SizedBox(width: 20),
-                          SfacIcon.dart(),
-                          const SizedBox(width: 18),
-                          const Text('커뮤니티 전체'),
+                          SizedBox(width: 20),
+                          SFIcon(SfacIcon.dart),
+                          SizedBox(width: 18),
+                          Text('커뮤니티 전체'),
                         ],
                       )
                     ],
@@ -158,7 +152,7 @@ class MyApp extends StatelessWidget {
                   Text('Icons', style: SfacTextStyle.b1B20()),
                   const SizedBox(height: 10),
                   Wrap(
-                    children: [
+                    children: const [
                       Icon(Icons.lock_clock),
                       SFIcon(SfacIcon.dart,size: 50),
                       SFIcon(SfacIcon.phone),
@@ -197,7 +191,7 @@ class MyApp extends StatelessWidget {
                   Divider(
                     thickness: 3,
                   ),
-                  SFTextArea(controller: TextEditingController(), hintText: '내용을 입력해주세요', maxLines: 2, minLines: 2, writer: '신승호',)
+                  SFTextArea(controller: TextEditingController(), hintText: '내용을 입력해주세요', maxLines: 2, minLines: 2, writer: '신승호',),
                   const SizedBox(height: 10),
                   const Divider(thickness: 5),
                   const SizedBox(height: 10),
@@ -297,21 +291,21 @@ class MyApp extends StatelessWidget {
                         onTap: (index) {
                           print(index);
                         },
-                        children: [
+                        children: const [
                           Row(
                             children: [
-                              const SizedBox(width: 20),
-                              SfacIcon.dart(),
-                              const SizedBox(width: 18),
-                              const Text('커뮤니티 전체'),
+                              SizedBox(width: 20),
+                              SFIcon(SfacIcon.dart),
+                              SizedBox(width: 18),
+                              Text('커뮤니티 전체'),
                             ],
                           ),
                           Row(
                             children: [
-                              const SizedBox(width: 20),
-                              SfacIcon.dart(),
-                              const SizedBox(width: 18),
-                              const Text('커뮤니티 전체'),
+                              SizedBox(width: 20),
+                              SFIcon(SfacIcon.dart),
+                              SizedBox(width: 18),
+                              Text('커뮤니티 전체'),
                             ],
                           )
                         ],
