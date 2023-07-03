@@ -14,7 +14,7 @@ class SfCard extends StatelessWidget {
       this.title,
       this.subtitle,
       this.left,
-      this.ritht,
+      this.right,
       this.top,
       this.bottom,
       this.heightSpacing = 10,
@@ -22,7 +22,7 @@ class SfCard extends StatelessWidget {
   final Widget? title;
   final Widget? subtitle;
   final Widget? left;
-  final Widget? ritht;
+  final Widget? right;
   final Widget? top;
   final Widget? bottom;
   final double outlineWidth;
@@ -89,8 +89,8 @@ class SfCard extends StatelessWidget {
                     ],
                   ),
                 ),
-                ritht ?? const SizedBox(),
-                SizedBox(width: ritht != null ? widthSpacing : 0),
+                right ?? const SizedBox(),
+                SizedBox(width: right != null ? widthSpacing : 0),
               ],
             )),
       ),

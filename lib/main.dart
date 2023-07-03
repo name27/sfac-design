@@ -266,27 +266,22 @@ class MyApp extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text('Card', style: SfacTextStyle.b1B20()),
                   const SizedBox(height: 10),
-                  SizedBox(
+                  SfCard(
+                    outlineWidth: 0,
+                    margin: 0,
+                    outlineColor: Colors.transparent,
                     width: 245,
-                    child: Column(
-                      children: [
-                        SfImageCard(
-                          image: Image.network(
-                            'https://picsum.photos/200/100',
-                            width: 245,
-                            height: 145,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        const SfTitleSubtitle(
-                          spaceing: 5,
-                          title: 'AI 서비스 완성! AI 웹 개발 취업 캠프(프론트엔드&백엔드)',
-                          subtitle:
-                              '하루만에 살펴보는 전문가 1인창업 및 기술 사업화에 필요한 사업계획서 작성방법,알아볼까요?',
-                        ),
-                      ],
+                    top: SfImageCard(
+                      image: Image.network(
+                        'https://picsum.photos/200/100',
+                        width: 245,
+                        height: 145,
+                        fit: BoxFit.cover,
+                      ),
                     ),
+                    title: const Text('AI 서비스 완성! AI 웹 개발 취업 캠프(프론트엔드&백엔드)'),
+                    subtitle: const Text(
+                        '하루만에 살펴보는 전문가 1인창업 및 기술 사업화에 필요한 사업계획서 작성방법,알아볼까요?'),
                   ),
                   const SizedBox(height: 15),
                   SfCard(
@@ -299,54 +294,48 @@ class MyApp extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    title: Text('AI 서비스 완성! AI 웹 개발 취업 캠프(프론트엔드&백엔드)'),
-                    subtitle: Text(
+                    title: const Text('AI 서비스 완성! AI 웹 개발 취업 캠프(프론트엔드&백엔드)'),
+                    subtitle: const Text(
                         '하루만에 살펴보는 전문가 1인창업 및 기술 사업화에 필요한 사업계획서 작성방법,알아볼까요?'),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    child: Row(children: [
-                      SfImageCard(
-                        image: Image.network(
-                          'https://picsum.photos/200/100',
-                          width: 200,
-                          height: 145,
-                          fit: BoxFit.cover,
-                        ),
+                  SfCard(
+                    outlineWidth: 0,
+                    margin: 0,
+                    outlineColor: Colors.transparent,
+                    widthSpacing: 15,
+                    left: SfImageCard(
+                      image: Image.network(
+                        'https://picsum.photos/100/100',
+                        width: 150,
+                        height: 150,
+                        fit: BoxFit.cover,
                       ),
-                      const SizedBox(width: 10),
-                      const SizedBox(
-                          width: 150,
-                          child: SfTitleSubtitle(
-                            spaceing: 5,
-                            title: 'AI 서비스 완성! AI 웹 개발 취업 캠프(프론트엔드&백엔드)',
-                            subtitle:
-                                '하루만에 살펴보는 전문가 1인창업 및 기술 사업화에 필요한 사업계획서 작성방법,알아볼까요?',
-                          )),
-                    ]),
+                    ),
+                    title: const Text('AI 서비스 완성! AI 웹 개발 취업 캠프(프론트엔드&백엔드)'),
+                    subtitle: const Text(
+                        '하루만에 살펴보는 전문가 1인창업 및 기술 사업화에 필요한 사업계획서 작성방법,알아볼까요?'),
                   ),
                   const SizedBox(height: 15),
-                  SizedBox(
+                  SfCard(
+                    outlineWidth: 0,
+                    margin: 0,
+                    outlineColor: Colors.transparent,
                     width: 245,
-                    child: Column(
+                    top: SfImageCard(
+                      image: Image.network(
+                        'https://picsum.photos/200/300',
+                        width: 245,
+                        height: 145,
+                        fit: BoxFit.cover,
+                      ),
+                      bottomRadius: 0,
+                    ),
+                    title: const Text('AI 서비스 완성! AI 웹 개발 취업 캠프(프론트엔드&백엔드)'),
+                    subtitle: const Text(
+                        '하루만에 살펴보는 전문가 1인창업 및 기술 사업화에 필요한 사업계획서 작성방법,알아볼까요?'),
+                    bottom: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SfImageCard(
-                          image: Image.network(
-                            'https://picsum.photos/200/300',
-                            width: 245,
-                            height: 145,
-                            fit: BoxFit.cover,
-                          ),
-                          bottomRadius: 0,
-                        ),
-                        const SizedBox(height: 10),
-                        const SfTitleSubtitle(
-                          title: 'AI 서비스 완성! AI 웹 개발 취업 캠프(프론트엔드&백엔드)',
-                          subtitle:
-                              '하루만에 살펴보는 전문가 1인창업 및 기술 사업화에 필요한 사업계획서 작성방법,알아볼까요?',
-                        ),
-                        const SizedBox(height: 5),
                         Wrap(
                             spacing: 3,
                             children: ['무료강의', 'KITRI', '사업계획서', '모집중']
@@ -371,6 +360,7 @@ class MyApp extends StatelessWidget {
                                 ),
                               ],
                             ),
+                            const SizedBox(height: 15),
                             Text(
                               '2023,05,20',
                               style: SfacTextStyle.b5R12(
@@ -381,29 +371,26 @@ class MyApp extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  SizedBox(
+                  const SizedBox(height: 15),
+                  SfCard(
+                    outlineWidth: 0,
+                    margin: 0,
+                    outlineColor: Colors.transparent,
                     width: 220,
-                    child: Column(
-                      children: [
-                        SfImageCard(
-                          image: Image.network(
-                            'https://picsum.photos/200/200',
-                            width: 220,
-                            height: 125,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        const SfTitleSubtitle(
-                          title:
-                              'Lorem lpsum is simply dummy to asdfsdafasdfasdfasdfsafsaff',
-                          titleOverflow: TextOverflow.ellipsis,
-                          subtitle:
-                              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
-                        ),
-                      ],
+                    top: SfImageCard(
+                      image: Image.network(
+                        'https://picsum.photos/200/200',
+                        width: 220,
+                        height: 125,
+                        fit: BoxFit.cover,
+                      ),
                     ),
+                    title: const Text(
+                      'Lorem lpsum is simply dummy to asdfsdafasdfasdfasdfsafsaff',
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    subtitle: const Text(
+                        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. '),
                   ),
                   const SizedBox(height: 10),
                   SfCard(
@@ -467,110 +454,58 @@ class MyApp extends StatelessWidget {
                           const Text('댓글 0개'),
                         ]),
                   ),
-
-                  // SfCard(
-                  //   width: 300, // 넓이 조절
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       Row(
-                  //         children: [
-                  //           SfAvatar(
-                  //             size: 30,
-                  //             child: SvgPicture.asset('assets/svg/logo.svg'),
-                  //           ),
-                  //           const SizedBox(width: 5),
-                  //           Text(
-                  //             '스나이퍼팩토리',
-                  //             style: SfacTextStyle.b5B12(
-                  //                 color: SfacColor.primary60),
-                  //           ),
-                  //           const Padding(
-                  //             padding: EdgeInsets.all(8.0),
-                  //             child: Icon(
-                  //               Icons.circle,
-                  //               size: 5,
-                  //               color: SfacColor.grayScale60,
-                  //             ),
-                  //           ),
-                  //           Text(
-                  //             '매니저',
-                  //             style: SfacTextStyle.b5M12(
-                  //                 color: SfacColor.grayScale60),
-                  //           ),
-                  //           const Padding(
-                  //             padding: EdgeInsets.all(8.0),
-                  //             child: Icon(
-                  //               Icons.circle,
-                  //               size: 5,
-                  //               color: SfacColor.grayScale60,
-                  //             ),
-                  //           ),
-                  //           Text(
-                  //             '2023/08/28',
-                  //             style: SfacTextStyle.b5M12(
-                  //                 color: SfacColor.grayScale60),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //       const SizedBox(height: 5),
-                  //       const SfTitleSubtitle(
-                  //           title:
-                  //               'Lorem Ipsum is simply dummy text of the printing',
-                  //           subtitle:
-                  //               '''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remainin...'''),
-                  //       const SizedBox(height: 5),
-                  //       Wrap(
-                  //           spacing: 3,
-                  //           children: ['무료강의', 'KITRI', '사업계획서', '모집중']
-                  //               .map((e) => SfBadge(
-                  //                     child: Text(e),
-                  //                   ))
-                  //               .toList()),
-                  //       const SizedBox(height: 5),
-                  //       const Text('댓글 0개'),
-                  //     ],
-                  //   ),
-                  // ),
                   const SizedBox(height: 10),
-                  // SfCard(
-                  //   height: 100,
-                  //   child: Row(
-                  //     children: [
-                  //       SfImageCard(
-                  //         image: Image.network(
-                  //           'https://picsum.photos/250/200',
-                  //           fit: BoxFit.cover,
-                  //           width: 90,
-                  //           height: 100,
-                  //         ),
-                  //       ),
-                  //       const SizedBox(width: 5),
-                  //       const Column(
-                  //         crossAxisAlignment: CrossAxisAlignment.start,
-                  //         children: [
-                  //           SfBadge(child: Text('07분분')),
-                  //           SfTitleSubtitle(
-                  //             title: '[DAY1] 1 프런트엔드와 백엔드',
-                  //             subtitle: '[수강기간]\n2023.03.03~2023.12.12',
-                  //             spaceing: 15,
-                  //           )
-                  //         ],
-                  //       ),
-                  //       const Column(
-                  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //         children: [
-                  //           SizedBox(),
-                  //           SfBadge(
-                  //             margin: EdgeInsets.symmetric(
-                  //                 horizontal: 15, vertical: 5),
-                  //             child: Text('수강하기'),
-                  //           )
-                  //         ],
-                  //       )
-                  //     ],
-                  //   ),
-                  // ),
+                  SfCard(
+                    height: 150,
+                    widthSpacing: 10,
+                    left: SfImageCard(
+                      image: Image.network(
+                        'https://picsum.photos/100/200',
+                        fit: BoxFit.cover,
+                        width: 100,
+                        height: 150,
+                      ),
+                    ),
+                    top: const SfBadge(child: Text('07분')),
+                    title: const Text('[DAY1] 1 프런트엔드와 백엔드'),
+                    subtitle: const Text('[수강기간]\n2023.03.03~2023.12.12'),
+                    right: const Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SizedBox(),
+                        Text('수강하기'),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  SfCard(
+                    heightSpacing: 2,
+                    left: SfAvatar(
+                        child: SvgPicture.asset('assets/svg/logo.svg')),
+                    title: const Row(children: [
+                      Text('김관우'),
+                      SizedBox(width: 5),
+                      Icon(
+                        Icons.circle,
+                        size: 5,
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        '수강생',
+                        style: TextStyle(color: SfacColor.grayScale40),
+                      )
+                    ]),
+                    subtitle: const Text('이거로 합시다 나히잉스'),
+                    right: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            color: Colors.red,
+                          ),
+                          Text('20203/06/29')
+                        ]),
+                  ),
                   const SizedBox(height: 10),
                   const Divider(thickness: 5),
                   const SizedBox(height: 10),
