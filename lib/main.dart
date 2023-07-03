@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:widgets/endwidget/accordion.dart';
 import 'package:widgets/endwidget/avatar.dart';
 import 'package:widgets/endwidget/badge.dart';
@@ -11,7 +11,6 @@ import 'package:widgets/endwidget/navigation_menu.dart';
 import 'package:widgets/endwidget/select_main.dart';
 import 'package:widgets/endwidget/selected_sub.dart';
 import 'package:widgets/endwidget/tap.dart';
-import 'package:widgets/endwidget/title_subtitle.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_icon.dart';
 import 'package:widgets/util/sfac_text_style.dart';
@@ -31,6 +30,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -142,14 +142,27 @@ class MyApp extends StatelessWidget {
                     style: SfacTextStyle.b1B20(),
                   ),
                   const SizedBox(height: 10),
-                  SfButton(
-                    child: const Text('로그인'),
-                    onPressed: () {},
+                  Builder(
+                    builder: (BuildContext context) => SfButton(
+                      child: const Text('로그인1'),
+                      onPressed: () {
+                        // ScaffoldMessenger.of(context).showSnackBar(
+                        //     SnackBar(content: Text("My amazing message! O.o")));
+                      },
+                    ),
                   ),
                   const SizedBox(height: 10),
                   Text('Destructive', style: SfacTextStyle.b1B20()),
                   SfButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Fluttertoast.showToast(
+                      //     msg: "This is Center Short Toast",
+                      //     gravity: ToastGravity.CENTER,
+                      //     timeInSecForIosWeb: 1,
+                      //     backgroundColor: Colors.red,
+                      //     textColor: Colors.white,
+                      //     fontSize: 16.0);
+                    },
                     backgroundColor: SfacColor.red,
                     child: const Text('로그인'),
                   ),
@@ -159,6 +172,7 @@ class MyApp extends StatelessWidget {
                     onPressed: () {},
                     backgroundColor: Colors.white,
                     foregroundColor: SfacColor.primary60,
+                    ishover: true,
                     child: const Text('로그인'),
                   ),
                   const SizedBox(height: 10),
@@ -180,8 +194,10 @@ class MyApp extends StatelessWidget {
                   Text('Ghost', style: SfacTextStyle.b1B20()),
                   SfButton(
                     onPressed: () {},
-                    backgroundColor: Colors.transparent,
+                    backgroundColor: Colors.white,
                     foregroundColor: SfacColor.primary60,
+                    ishover: true,
+                    hoverBackgroundColor: SfacColor.primary10,
                     child: const Text('로그인'),
                   ),
                   const SizedBox(height: 10),
