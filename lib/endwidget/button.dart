@@ -16,6 +16,9 @@ class SfButton extends StatefulWidget {
     this.height = 50,
     this.outlineWidth = 1.0,
     this.radius = 10,
+    this.hoverTextStyle,
+    this.hoverBackgroundColor,
+    this.ishover = false,
   });
   final Widget? child;
   final Color? backgroundColor;
@@ -28,21 +31,34 @@ class SfButton extends StatefulWidget {
   final double? height;
   final double outlineWidth;
   final double radius;
+  final TextStyle? hoverTextStyle;
+  final Color? hoverBackgroundColor;
+  final bool ishover;
 
   @override
   State<SfButton> createState() => _SfButtonState();
 }
 
 class _SfButtonState extends State<SfButton> {
+  bool ishover = false;
   @override
   Widget build(BuildContext context) {
     Widget? childText;
     TextStyle? childStyle;
     if (widget.child != null) {
-      childStyle = SfacTextStyle.b3B16(
-          color: widget.onPressed == null
-              ? widget.disabledForegroundColor ?? SfacColor.grayScale20
-              : widget.foregroundColor ?? Colors.white);
+      childStyle = ishover
+          ? widget.hoverTextStyle ??
+              TextStyle(
+                  decoration: TextDecoration.underline, decorationThickness: 1.5,
+                  fontFamily: 'PretendardBold',
+                  fontSize: 16,
+                  color: widget.onPressed == null
+                      ? widget.disabledForegroundColor ?? SfacColor.grayScale20
+                      : widget.foregroundColor ?? Colors.white)
+          : SfacTextStyle.b3B16(
+              color: widget.onPressed == null
+                  ? widget.disabledForegroundColor ?? SfacColor.grayScale20
+                  : widget.foregroundColor ?? Colors.white);
       childText = AnimatedDefaultTextStyle(
         style: childStyle,
         duration: kThemeChangeDuration,
@@ -53,10 +69,22 @@ class _SfButtonState extends State<SfButton> {
       width: widget.width ?? MediaQuery.of(context).size.width,
       height: widget.height,
       child: ElevatedButton(
-        onPressed: widget.onPressed,
+       onPressed: widget.onPressed,
+      //  onPressed: () {
+      //     ScaffoldMessenger.of(context).showSnackBar(
+      //                     SnackBar(content: Text("My amazing message! O.o")));
+      //  },
+        onHover: widget.ishover
+            ? (value) {
+                ishover = value;
+                setState(() {});
+              }
+            : null,
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: widget.backgroundColor ?? SfacColor.primary80,
+          backgroundColor: ishover
+              ? widget.hoverBackgroundColor ?? SfacColor.primary5
+              : widget.backgroundColor ?? SfacColor.primary80,
           foregroundColor: widget.foregroundColor,
           disabledBackgroundColor:
               widget.disabledBackgroundColor ?? SfacColor.grayScale5,
