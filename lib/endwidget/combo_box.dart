@@ -64,6 +64,7 @@ class _ComboBoxState extends State<ComboBox> {
               right: widget.trailingIcon ?? const SFIcon(SfacIcon.coverbox),
             ),
           ),
+          const SizedBox(height: 5),
           isTap
               ? SfCard(
                   outlineColor: widget.outlineColor,
