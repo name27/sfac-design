@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/endwidget/card.dart';
 import 'package:widgets/endwidget/select_main.dart';
+import 'package:widgets/endwidget/select_menu.dart';
 import 'package:widgets/util/sfac_color.dart';
+import 'package:widgets/util/sfac_icon.dart';
 import 'package:widgets/util/sfac_text_style.dart';
+import 'package:widgets/widget/icon.dart';
 
 class ComboBox extends StatefulWidget {
   const ComboBox({
     super.key,
-    required this.children,
+    required this.selectMenu,
     this.title,
     this.margin = 10,
     this.outlineColor,
@@ -17,9 +20,10 @@ class ComboBox extends StatefulWidget {
     required this.height,
     this.trailingIcon,
     this.onTap,
+    this.boxScorllPhysics,
   });
   final String? title;
-  final List<Widget?> children;
+  final List<SelectMenu?> selectMenu;
   final double margin;
   final Color? outlineColor;
   final double outlineWidth;
@@ -28,6 +32,7 @@ class ComboBox extends StatefulWidget {
   final double height;
   final Widget? trailingIcon;
   final Function(int)? onTap;
+  final ScrollPhysics? boxScorllPhysics;
 
   @override
   State<ComboBox> createState() => _ComboBoxState();
@@ -58,9 +63,10 @@ class _ComboBoxState extends State<ComboBox> {
                 widget.title ?? 'Select framework',
                 style: SfacTextStyle.b3R16(color: SfacColor.grayScale40),
               ),
-              right: widget.trailingIcon ?? const Icon(Icons.thumbs_up_down),
+              right: widget.trailingIcon ?? const SFIcon(SfacIcon.coverbox),
             ),
           ),
+          const SizedBox(height: 5),
           isTap
               ? SfCard(
                   outlineColor: widget.outlineColor,
@@ -68,6 +74,7 @@ class _ComboBoxState extends State<ComboBox> {
                   outlineRadius: widget.outlineRadius,
                   margin: widget.margin,
                   top: SfSelectedMain(
+                      physics: widget.boxScorllPhysics,
                       onTap: (index) {
                         if (widget.onTap != null) {
                           widget.onTap!(index);
@@ -76,7 +83,7 @@ class _ComboBoxState extends State<ComboBox> {
                       heightSpacing: 10,
                       direction: Axis.vertical,
                       height: widget.height,
-                      children: widget.children))
+                      children: widget.selectMenu))
               : const SizedBox()
         ],
       ),
