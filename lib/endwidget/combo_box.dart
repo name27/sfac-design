@@ -20,6 +20,7 @@ class ComboBox extends StatefulWidget {
     required this.height,
     this.trailingIcon,
     this.onTap,
+    this.boxScorllPhysics,
   });
   final String? title;
   final List<SelectMenu?> selectMenu;
@@ -31,6 +32,7 @@ class ComboBox extends StatefulWidget {
   final double height;
   final Icon? trailingIcon;
   final Function(int)? onTap;
+  final ScrollPhysics? boxScorllPhysics;
 
   @override
   State<ComboBox> createState() => _ComboBoxState();
@@ -72,6 +74,7 @@ class _ComboBoxState extends State<ComboBox> {
                   outlineRadius: widget.outlineRadius,
                   margin: widget.margin,
                   top: SfSelectedMain(
+                      physics: widget.boxScorllPhysics,
                       onTap: (index) {
                         if (widget.onTap != null) {
                           widget.onTap!(index);

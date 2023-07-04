@@ -52,8 +52,9 @@ class MyApp extends StatelessWidget {
                   ),
                   const Divider(thickness: 3),
                   ComboBox(
+                    boxScorllPhysics: BouncingScrollPhysics(),
                     width: 250,
-                    height: 250,
+                    height: 150,
                     onTap: (p0) {
                       print(p0);
                     },
