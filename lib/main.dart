@@ -41,6 +41,25 @@ class MyApp extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SfSelectedMain(
+                      width: 245,
+                      height: 100,
+                      onTap: (index) {
+                        print(index);
+                      },
+                      selectMenu: const [
+                        SelectMenu(
+                            icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
+                        SelectMenu(icon: SFIcon(SfacIcon.laptop), text: '웹개발'),
+                        SelectMenu(text: '앱개발'),
+                        SelectMenu(
+                            icon: SFIcon(SfacIcon.graph), text: 'BigData'),
+                        SelectMenu(
+                            icon: SFIcon(SfacIcon.palette), text: 'UI/UX'),
+                        SelectMenu(icon: SFIcon(SfacIcon.lock), text: '해킹/보안'),
+                        SelectMenu(icon: SFIcon(SfacIcon.robot), text: 'AI'),
+                        SelectMenu(icon: SFIcon(SfacIcon.gamepad), text: '게임개발')
+                      ]),
                   SfacInput(
                     inputContent: Text(
                       'Input',
@@ -54,14 +73,14 @@ class MyApp extends StatelessWidget {
                   ComboBox(
                     boxScorllPhysics: BouncingScrollPhysics(),
                     width: 250,
-                    height: 150,
+                    height: 350,
                     onTap: (p0) {
                       print(p0);
                     },
                     selectMenu: const [
                       SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
                       SelectMenu(icon: SFIcon(SfacIcon.laptop), text: '웹개발'),
-                      SelectMenu(icon: SFIcon(SfacIcon.phone), text: '앱개발'),
+                      SelectMenu(text: '앱개발'),
                       SelectMenu(icon: SFIcon(SfacIcon.graph), text: 'BigData'),
                       SelectMenu(icon: SFIcon(SfacIcon.palette), text: 'UI/UX'),
                       SelectMenu(icon: SFIcon(SfacIcon.lock), text: '해킹/보안'),
@@ -191,7 +210,7 @@ class MyApp extends StatelessWidget {
                     builder: (BuildContext context) => SfButton(
                       child: const Text('로그인1'),
                       onPressed: () {
-                        showToast(context, 'This is a toast');
+                        Alert();
                         // ScaffoldMessenger.of(context).showSnackBar(
                         //     SnackBar(content: Text("My amazing message! O.o")));
                       },
@@ -272,30 +291,28 @@ class MyApp extends StatelessWidget {
                     children: [
                       const Text('Selected-Main'),
                       SfSelectedMain(
-                        width: 245,
-                        height: 100,
-                        onTap: (index) {
-                          print(index);
-                        },
-                        children: const [
-                          Row(
-                            children: [
-                              SizedBox(width: 20),
-                              SFIcon(SfacIcon.dart),
-                              SizedBox(width: 18),
-                              Text('커뮤니티 전체'),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(width: 20),
-                              SFIcon(SfacIcon.dart),
-                              SizedBox(width: 18),
-                              Text('커뮤니티 전체'),
-                            ],
-                          )
-                        ],
-                      ),
+                          width: 245,
+                          height: 100,
+                          onTap: (index) {
+                            print(index);
+                          },
+                          selectMenu: const [
+                            SelectMenu(
+                                icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
+                            SelectMenu(
+                                icon: SFIcon(SfacIcon.laptop), text: '웹개발'),
+                            SelectMenu(text: '앱개발'),
+                            SelectMenu(
+                                icon: SFIcon(SfacIcon.graph), text: 'BigData'),
+                            SelectMenu(
+                                icon: SFIcon(SfacIcon.palette), text: 'UI/UX'),
+                            SelectMenu(
+                                icon: SFIcon(SfacIcon.lock), text: '해킹/보안'),
+                            SelectMenu(
+                                icon: SFIcon(SfacIcon.robot), text: 'AI'),
+                            SelectMenu(
+                                icon: SFIcon(SfacIcon.gamepad), text: '게임개발')
+                          ]),
                     ],
                   ),
                   const SizedBox(height: 10),
