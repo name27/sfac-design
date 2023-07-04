@@ -13,13 +13,29 @@ class Keyword extends StatelessWidget {
       this.textStyle,
       this.outlineWidth = 1.0,
       this.verticalMargin = -2});
+
+  //키워드    
   final List<Widget?> keyword;
+
+  //텍스트스타일
   final TextStyle? textStyle;
+
+  //간격
   final double spacing;
+
+  //Chip 모서리
   final double borderRadius;
+
+  //배경색
   final Color? backgroundColor;
+
+  //테두리 색
   final Color? outlineColor;
+
+  //테두리 굵기
   final double outlineWidth;
+
+  //수직간격
   final double verticalMargin;
 
   @override
