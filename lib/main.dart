@@ -60,10 +60,13 @@ class MyApp extends StatelessWidget {
                     },
                     selectMenu: const [
                       SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
-                      SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
-                      SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
-                      SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
-                      SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체')
+                      SelectMenu(icon: SFIcon(SfacIcon.laptop), text: '웹개발'),
+                      SelectMenu(icon: SFIcon(SfacIcon.phone), text: '앱개발'),
+                      SelectMenu(icon: SFIcon(SfacIcon.graph), text: 'BigData'),
+                      SelectMenu(icon: SFIcon(SfacIcon.palette), text: 'UI/UX'),
+                      SelectMenu(icon: SFIcon(SfacIcon.lock), text: '해킹/보안'),
+                      SelectMenu(icon: SFIcon(SfacIcon.robot), text: 'AI'),
+                      SelectMenu(icon: SFIcon(SfacIcon.gamepad), text: '게임개발')
                     ],
                   ),
                   const SfBreadcrumb(menu: ['교육과정', '심화과정', '과정'], height: 50),
