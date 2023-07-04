@@ -47,47 +47,72 @@ class MyApp extends StatelessWidget {
                     onTap: (p0) {
                       print(p0);
                     },
+                    trailingIcon: SFIcon(SfacIcon.coverbox),
                     children: const [
                       Row(
                         children: [
                           SizedBox(width: 20),
                           SFIcon(SfacIcon.dart),
                           SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
+                          Text('교육과정 전체'),
                         ],
                       ),
                       Row(
                         children: [
                           SizedBox(width: 20),
-                          SFIcon(SfacIcon.dart),
+                          SFIcon(SfacIcon.laptop),
                           SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
+                          Text('웹개발'),
                         ],
                       ),
                       Row(
                         children: [
                           SizedBox(width: 20),
-                          SFIcon(SfacIcon.dart),
+                          SFIcon(SfacIcon.phone),
                           SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
+                          Text('앱개발'),
                         ],
                       ),
                       Row(
                         children: [
                           SizedBox(width: 20),
-                          SFIcon(SfacIcon.dart),
+                          SFIcon(SfacIcon.graph),
                           SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
+                          Text('BigData'),
                         ],
                       ),
                       Row(
                         children: [
                           SizedBox(width: 20),
-                          SFIcon(SfacIcon.dart),
+                          SFIcon(SfacIcon.palette),
                           SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
+                          Text('UI/UX'),
                         ],
-                      )
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(width: 20),
+                          SFIcon(SfacIcon.lock),
+                          SizedBox(width: 18),
+                          Text('해킹/보안'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(width: 20),
+                          SFIcon(SfacIcon.robot),
+                          SizedBox(width: 18),
+                          Text('AI'),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(width: 20),
+                          SFIcon(SfacIcon.gamepad),
+                          SizedBox(width: 18),
+                          Text('게임개발'),
+                        ],
+                      ),
                     ],
                   ),
                   const SfBreadcrumb(menu: ['교육과정', '심화과정', '과정'], height: 50),

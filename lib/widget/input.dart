@@ -20,13 +20,13 @@ class SfacInput extends StatelessWidget {
   final TextEditingController controller; //텍스트 필드 컨트롤러
   //onChanged: input 칸의 내용이 바로바로 바뀔 때
   final Function(String)? onchanged;
-  final Text? inputContent;
-  final Color? fillColor;
+  final Text? inputContent;   //텍스트필드 위에 Text
+  final Color? fillColor; //텍스트필드 색상
   final String? hintText; //힌트 텍스트
   final String? errorText; //에러 텍스트
   final Function(String)? onChanged; //onChanged 이벤트
   final bool obscureText; //텍스트 가림 여부
-  final Color? errorTextColor; 
+  final Color? errorTextColor; //error텍스트 색
   final String? helperText; //텍스트필드 아래 helperText
   final double inputDecorationBorderRadius; //텍스트필드 모서리둥글게
 
