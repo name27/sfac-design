@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/endwidget/badge.dart';
+import 'package:widgets/endwidget/select_menu.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_icon.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 import 'package:widgets/widget/icon.dart';
 import 'package:widgets/widget/input.dart';
 import 'package:widgets/widget/search_field.dart';
+import 'package:widgets/widget/test_toast.dart';
 import 'package:widgets/widget/textarea.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgets/endwidget/accordion.dart';
@@ -19,6 +21,7 @@ import 'package:widgets/endwidget/selected_sub.dart';
 import 'package:widgets/endwidget/tap.dart';
 import 'package:widgets/endwidget/breadcrumb.dart';
 import 'package:widgets/endwidget/combo_box.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -38,56 +41,28 @@ class MyApp extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SfacInput(inputContent: Text('Input',style: SfacTextStyle.b4B14(color: SfacColor.primary80),),hintText: 'Input(텍스트필드)', controller: TextEditingController(),helperText: '나 Input(텍스트필드)',),
-                  const Divider(
-                    thickness: 3),
+                  SfacInput(
+                    inputContent: Text(
+                      'Input',
+                      style: SfacTextStyle.b4B14(color: SfacColor.primary80),
+                    ),
+                    hintText: 'Input(텍스트필드)',
+                    controller: TextEditingController(),
+                    helperText: '나 Input(텍스트필드)',
+                  ),
+                  const Divider(thickness: 3),
                   ComboBox(
                     width: 250,
                     height: 250,
                     onTap: (p0) {
                       print(p0);
                     },
-                    children: const [
-                      Row(
-                        children: [
-                          SizedBox(width: 20),
-                          SFIcon(SfacIcon.dart),
-                          SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(width: 20),
-                          SFIcon(SfacIcon.dart),
-                          SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(width: 20),
-                          SFIcon(SfacIcon.dart),
-                          SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(width: 20),
-                          SFIcon(SfacIcon.dart),
-                          SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(width: 20),
-                          SFIcon(SfacIcon.dart),
-                          SizedBox(width: 18),
-                          Text('커뮤니티 전체'),
-                        ],
-                      )
+                    selectMenu: const [
+                      SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
+                      SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
+                      SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
+                      SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
+                      SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체')
                     ],
                   ),
                   const SfBreadcrumb(menu: ['교육과정', '심화과정', '과정'], height: 50),
@@ -151,10 +126,10 @@ class MyApp extends StatelessWidget {
                   const SizedBox(height: 10),
                   Text('Icons', style: SfacTextStyle.b1B20()),
                   const SizedBox(height: 10),
-                  Wrap(
-                    children: const [
+                  const Wrap(
+                    children: [
                       Icon(Icons.lock_clock),
-                      SFIcon(SfacIcon.dart,size: 50),
+                      SFIcon(SfacIcon.dart, size: 50),
                       SFIcon(SfacIcon.phone),
                       SFIcon(SfacIcon.laptop),
                       SFIcon(SfacIcon.palette),
@@ -188,10 +163,16 @@ class MyApp extends StatelessWidget {
                       )
                     ],
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 3,
                   ),
-                  SFTextArea(controller: TextEditingController(), hintText: '내용을 입력해주세요', maxLines: 2, minLines: 2, writer: '신승호',),
+                  SFTextArea(
+                    controller: TextEditingController(),
+                    hintText: '내용을 입력해주세요',
+                    maxLines: 2,
+                    minLines: 2,
+                    writer: '신승호',
+                  ),
                   const SizedBox(height: 10),
                   const Divider(thickness: 5),
                   const SizedBox(height: 10),
@@ -206,6 +187,7 @@ class MyApp extends StatelessWidget {
                     builder: (BuildContext context) => SfButton(
                       child: const Text('로그인1'),
                       onPressed: () {
+                        showToast(context, 'This is a toast');
                         // ScaffoldMessenger.of(context).showSnackBar(
                         //     SnackBar(content: Text("My amazing message! O.o")));
                       },
