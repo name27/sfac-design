@@ -3,22 +3,24 @@ import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
 class SfCard extends StatelessWidget {
-  const SfCard(
-      {super.key,
-      this.outlineWidth = 1.0,
-      this.outlineRadius = 10,
-      this.outlineColor,
-      this.margin = 20,
-      this.width,
-      this.height,
-      this.title,
-      this.subtitle,
-      this.left,
-      this.right,
-      this.top,
-      this.bottom,
-      this.heightSpacing = 10,
-      this.widthSpacing = 20});
+  const SfCard({
+    super.key,
+    this.outlineWidth = 1.0,
+    this.outlineRadius = 10,
+    this.backgroundColor,
+    this.outlineColor,
+    this.margin = 20,
+    this.width,
+    this.height,
+    this.title,
+    this.subtitle,
+    this.left,
+    this.right,
+    this.top,
+    this.bottom,
+    this.heightSpacing = 10,
+    this.widthSpacing = 20,
+  });
   final Widget? title;
   final Widget? subtitle;
   final Widget? left;
@@ -27,6 +29,7 @@ class SfCard extends StatelessWidget {
   final Widget? bottom;
   final double outlineWidth;
   final double outlineRadius;
+  final Color? backgroundColor;
   final Color? outlineColor;
   final double margin;
   final double? width;
@@ -58,6 +61,7 @@ class SfCard extends StatelessWidget {
     }
     return Container(
       decoration: BoxDecoration(
+          color: backgroundColor ?? Colors.white,
           borderRadius: BorderRadius.circular(outlineRadius),
           border: Border.all(
             color: outlineColor ?? SfacColor.grayScale20,
@@ -65,9 +69,12 @@ class SfCard extends StatelessWidget {
           )),
       child: Padding(
         padding: EdgeInsets.all(margin),
-        child: SizedBox(
+        child: Container(
             width: width,
             height: height,
+            decoration: BoxDecoration(
+              color: backgroundColor ?? Colors.white,
+            ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

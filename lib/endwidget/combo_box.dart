@@ -40,52 +40,119 @@ class ComboBox extends StatefulWidget {
 
 class _ComboBoxState extends State<ComboBox> {
   bool isTap = false;
+  String title = '';
+  Widget? icon;
+  int focusedIndex = 0;
+
+  OverlayEntry? _overlayEntry;
+  final LayerLink _layerLink = LayerLink();
+  Size? size;
+  final GlobalKey _buttonKey = GlobalKey();
+
+  void createOverlayEntry() {
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        width: widget.width,
+        child: CompositedTransformFollower(
+          link: _layerLink,
+          offset: Offset(0, size!.height),
+          child: SfCard(
+            outlineColor: widget.outlineColor,
+            outlineWidth: widget.outlineWidth,
+            outlineRadius: widget.outlineRadius,
+            margin: widget.margin,
+            top: SfSelectedMain(
+              downDuration: 300,
+              heightSpacing: 10,
+              direction: Axis.vertical,
+              height: widget.height,
+              selectMenu: widget.selectMenu,
+              focusedIndex: focusedIndex,
+              physics: widget.boxScorllPhysics,
+              onTap: (index) {
+                if (widget.onTap != null) {
+                  widget.onTap!(index);
+                }
+                title = widget.selectMenu[index]!.text;
+                icon = widget.selectMenu[index]?.icon;
+                focusedIndex = index;
+                if (_overlayEntry != null) {
+                  hideDropdown();
+                }
+                setState(() {});
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void showDropdown() {
+    Overlay.of(context).insert(_overlayEntry!);
+  }
+
+  void hideDropdown() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
+  }
+
+  void toggleDropdown() {
+    if (_overlayEntry == null) {
+      createOverlayEntry();
+      showDropdown();
+    } else {
+      hideDropdown();
+    }
+  }
+
+  Size? _getSize() {
+    if (_buttonKey.currentContext != null) {
+      final RenderBox renderBox =
+          _buttonKey.currentContext!.findRenderObject() as RenderBox;
+      Size size = renderBox.size;
+      return size;
+    }
+    return null;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        size = _getSize();
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          GestureDetector(
-            onTap: () {
-              isTap = !isTap;
-              setState(() {});
-            },
-            child: SfCard(
-              outlineColor: widget.outlineColor,
-              outlineWidth: widget.outlineWidth,
-              outlineRadius: widget.outlineRadius,
-              margin: widget.margin,
-              width: widget.width,
-              top: Text(
-                widget.title ?? 'Select framework',
-                style: SfacTextStyle.b3R16(color: SfacColor.grayScale40),
-              ),
-              right: widget.trailingIcon ?? const SFIcon(SfacIcon.coverbox),
-            ),
+      child: CompositedTransformTarget(
+        link: _layerLink,
+        child: GestureDetector(
+          key: _buttonKey,
+          onTap: toggleDropdown,
+          child: SfCard(
+            outlineColor: widget.outlineColor,
+            outlineWidth: widget.outlineWidth,
+            outlineRadius: widget.outlineRadius,
+            margin: widget.margin,
+            width: widget.width,
+            top: title != ''
+                ? SelectMenu(
+                    icon: icon,
+                    text: title,
+                  )
+                : Text(
+                    widget.title ?? 'Select framework',
+                    style: SfacTextStyle.b3R16(color: SfacColor.grayScale40),
+                  ),
+            right: widget.trailingIcon ?? const SFIcon(SfacIcon.coverbox),
           ),
-          const SizedBox(height: 5),
-          isTap
-              ? SfCard(
-                  outlineColor: widget.outlineColor,
-                  outlineWidth: widget.outlineWidth,
-                  outlineRadius: widget.outlineRadius,
-                  margin: widget.margin,
-                  top: SfSelectedMain(
-                      physics: widget.boxScorllPhysics,
-                      onTap: (index) {
-                        if (widget.onTap != null) {
-                          widget.onTap!(index);
-                        }
-                      },
-                      heightSpacing: 10,
-                      direction: Axis.vertical,
-                      height: widget.height,
-                      children: widget.selectMenu))
-              : const SizedBox()
-        ],
+        ),
       ),
     );
   }

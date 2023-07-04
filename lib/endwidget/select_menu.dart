@@ -4,7 +4,7 @@ import 'package:widgets/util/sfac_text_style.dart';
 class SelectMenu extends StatelessWidget {
   const SelectMenu(
       {super.key,
-      required this.icon,
+      this.icon,
       required this.text,
       this.widthSpacing = 15,
       this.leadingPadding = 20});
@@ -17,12 +17,14 @@ class SelectMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(width: leadingPadding),
+        SizedBox(width: icon == null ? 0 : leadingPadding),
         icon ?? const SizedBox(),
         SizedBox(width: widthSpacing),
-        Text(
-          text,
+        DefaultTextStyle(
           style: SfacTextStyle.b3R16(),
+          child: Text(
+            text,
+          ),
         ),
       ],
     );
