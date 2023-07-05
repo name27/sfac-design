@@ -61,7 +61,7 @@ class SfCard extends StatelessWidget {
     }
     return Container(
       decoration: BoxDecoration(
-          color: backgroundColor ?? Colors.white,
+          color: backgroundColor,
           borderRadius: BorderRadius.circular(outlineRadius),
           border: Border.all(
             color: outlineColor ?? SfacColor.grayScale20,
@@ -73,7 +73,7 @@ class SfCard extends StatelessWidget {
             width: width,
             height: height,
             decoration: BoxDecoration(
-              color: backgroundColor ?? Colors.white,
+              color: backgroundColor,
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,

@@ -7,7 +7,6 @@ import 'package:widgets/util/sfac_text_style.dart';
 import 'package:widgets/widget/icon.dart';
 import 'package:widgets/widget/input.dart';
 import 'package:widgets/widget/search_field.dart';
-import 'package:widgets/widget/test_toast.dart';
 import 'package:widgets/widget/textarea.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgets/endwidget/accordion.dart';
@@ -210,7 +209,6 @@ class MyApp extends StatelessWidget {
                     builder: (BuildContext context) => SfButton(
                       child: const Text('로그인1'),
                       onPressed: () {
-                        Alert();
                         // ScaffoldMessenger.of(context).showSnackBar(
                         //     SnackBar(content: Text("My amazing message! O.o")));
                       },
