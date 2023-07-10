@@ -41,6 +41,14 @@ class SfNavigationMenu extends StatefulWidget {
 
 class _SfNavigationMenu extends State<SfNavigationMenu> {
   int focusedChild = 0;
+  List<bool> ishover = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ishover = List.generate(widget.menu.length, (index) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -50,12 +58,19 @@ class _SfNavigationMenu extends State<SfNavigationMenu> {
         physics: widget.physics ?? const NeverScrollableScrollPhysics(),
         scrollDirection: widget.direction,
         itemCount: widget.menu.length,
-        itemBuilder: (context, index) => GestureDetector(
+        itemBuilder: (context, index) => InkWell(
+          splashColor: Colors.transparent, // 클릭할 때 나오는 효과 색상
+          highlightColor: Colors.transparent, // 클릭 유지 시 나오는 효과 색상
           onTap: () {
             if (widget.onTap != null) {
               widget.onTap!(index);
             }
             focusedChild = index;
+            setState(() {});
+          },
+          hoverColor: widget.focusedBackgroundColor ?? SfacColor.primary5,
+          onHover: (value) {
+            ishover[index] = value;
             setState(() {});
           },
           child: Container(
@@ -72,9 +87,11 @@ class _SfNavigationMenu extends State<SfNavigationMenu> {
               child: Text(
                 widget.menu[index],
                 style: SfacTextStyle.b3M16(
-                    color: focusedChild == index
+                    color: ishover[index]
                         ? widget.focusedMenuColor ?? SfacColor.primary80
-                        : widget.defaultMenuColor ?? Colors.black),
+                        : focusedChild == index
+                            ? widget.focusedMenuColor ?? SfacColor.primary80
+                            : widget.defaultMenuColor ?? Colors.black),
               ),
             ),
           ),

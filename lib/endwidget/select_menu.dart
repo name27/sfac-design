@@ -7,11 +7,13 @@ class SelectMenu extends StatelessWidget {
       this.icon,
       required this.text,
       this.widthSpacing = 15,
-      this.leadingPadding = 20});
+      this.leadingPadding = 20,
+      this.menuTextStyle});
   final Widget? icon;
   final String text;
   final double widthSpacing;
   final double leadingPadding;
+  final TextStyle? menuTextStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,8 @@ class SelectMenu extends StatelessWidget {
         icon ?? const SizedBox(),
         SizedBox(width: widthSpacing),
         DefaultTextStyle(
-          style: SfacTextStyle.b3R16(),
-          child: Text(
-            text,
-          ),
+          style: menuTextStyle ?? SfacTextStyle.b3R16(),
+          child: Text(text),
         ),
       ],
     );

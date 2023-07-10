@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:widgets/endwidget/badge.dart';
 import 'package:widgets/endwidget/select_menu.dart';
 import 'package:widgets/util/sfac_color.dart';
@@ -6,6 +7,7 @@ import 'package:widgets/util/sfac_icon.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 import 'package:widgets/widget/icon.dart';
 import 'package:widgets/widget/input.dart';
+import 'package:widgets/widget/overlay.dart';
 import 'package:widgets/widget/search_field.dart';
 import 'package:widgets/widget/textarea.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,6 +22,8 @@ import 'package:widgets/endwidget/selected_sub.dart';
 import 'package:widgets/endwidget/tap.dart';
 import 'package:widgets/endwidget/breadcrumb.dart';
 import 'package:widgets/endwidget/combo_box.dart';
+import 'package:widgets/widget/toast.dart';
+import 'package:widgets/widget/use_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,6 +44,26 @@ class MyApp extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Center(
+                    child: SfAccordion(
+                        title: Text('ㄴㅁㅇㄹsadasddㅇㄻㄴㅇㄹ',
+                            style: TextStyle(fontSize: 32)),
+                        content: Text(
+                            'asdmksadjknsdfajnkdsfjnkgfdjkgklghasdasndjklsadasfklrjufduifsihfshj')),
+                  ),
+                  TestWidget(),
+                  SfCard(
+                    top: SfBadge(child: Text('홈')),
+                    title: Text(
+                      'ListTile 커스텀 위젯 만들기',
+                      style: SfacTextStyle.b1B20(),
+                    ),
+                    right: SfButton(
+                      width: 120,
+                      child: Text('제출하기'),
+                      onPressed: () {},
+                    ),
+                  ),
                   SfSelectedMain(
                       width: 245,
                       height: 100,
@@ -70,7 +94,7 @@ class MyApp extends StatelessWidget {
                   ),
                   const Divider(thickness: 3),
                   ComboBox(
-                    boxScorllPhysics: BouncingScrollPhysics(),
+                    boxScorllPhysics: const BouncingScrollPhysics(),
                     width: 250,
                     height: 350,
                     onTap: (p0) {
@@ -208,9 +232,29 @@ class MyApp extends StatelessWidget {
                   Builder(
                     builder: (BuildContext context) => SfButton(
                       child: const Text('로그인1'),
+                      backgroundColor: SfacColor.primary100,
+                      textColor: Colors.white,
                       onPressed: () {
-                        // ScaffoldMessenger.of(context).showSnackBar(
-                        //     SnackBar(content: Text("My amazing message! O.o")));
+                        ToastOverlay.show(
+                          context,
+                          SfCard(
+                            backgroundColor: Colors.white,
+                            width: 360,
+                            title: Text('로그인 실패'),
+                            subtitle: Text('틀린 회원정보입니다. 다시 로그인해주세요'),
+                            heightSpacing: 5,
+                            widthSpacing: 5,
+                            right: SfButton(
+                              height: 30,
+                              width: 80,
+                              textColor: SfacColor.primary60,
+                              backgroundColor: SfacColor.primary5,
+                              outlineColor: SfacColor.primary60,
+                              child: Text('확인'),
+                              onPressed: () {},
+                            ),
+                          ),
+                        );
                       },
                     ),
                   ),
@@ -218,25 +262,69 @@ class MyApp extends StatelessWidget {
                   Text('Destructive', style: SfacTextStyle.b1B20()),
                   SfButton(
                     onPressed: () {
-                      // Fluttertoast.showToast(
-                      //     msg: "This is Center Short Toast",
-                      //     gravity: ToastGravity.CENTER,
-                      //     timeInSecForIosWeb: 1,
-                      //     backgroundColor: Colors.red,
-                      //     textColor: Colors.white,
-                      //     fontSize: 16.0);
+                      showToast(context, '틀린 회원정보입니다. 다시 로그인해주세요');
+                      // ToastOverlay.show(
+                      //   context,
+                      //   SfCard(
+                      //     backgroundColor: Colors.white,
+                      //     width: 360,
+                      //     title: Text('로그인 실패'),
+                      //     subtitle: Text('틀린 회원정보입니다. 다시 로그인해주세요'),
+                      //     heightSpacing: 5,
+                      //     widthSpacing: 5,
+                      //     right: SfButton(
+                      //       height: 30,
+                      //       width: 80,
+                      //       textColor: SfacColor.primary60,
+                      //       backgroundColor: SfacColor.primary5,
+                      //       outlineColor: SfacColor.primary60,
+                      //       child: Text('확인'),
+                      //       onPressed: () {},
+                      //     ),
+                      //   ),
+                      // );
+                      //  ToastOverlay.show(
+                      //       context,
+                      //       SfCard(
+                      //         backgroundColor: Colors.white,
+                      //         width: 360,
+                      //         title: Text('로그인 실패'),
+                      //         subtitle: Text('틀린 회원정보입니다. 다시 로그인해주세요'),
+                      //         heightSpacing: 5,
+                      //         widthSpacing: 5,
+                      //         right: SfButton(
+                      //           height: 30,
+                      //           width: 80,
+                      //           textColor: SfacColor.primary60,
+                      //           backgroundColor: SfacColor.primary5,
+                      //           outlineColor: SfacColor.primary60,
+                      //           child: Text('확인'),
+                      //           onPressed: () {},
+                      //         ),
+                      //       ),
+                      //     );
                     },
                     backgroundColor: SfacColor.red,
-                    child: const Text('로그인'),
+                    textColor: Colors.white,
+                    child: const Text('로그인2'),
                   ),
                   const SizedBox(height: 10),
                   Text('Link', style: SfacTextStyle.b1B20()),
+                  Row(
+                    children: [
+                      Text('링크 : '),
+                      SfButton(
+                        onPressed: () {},
+                        isLink: true,
+                        child:
+                            Text('https://sadfsdafs,fsd.fdsflsdf.ds/fdsf,.sdf'),
+                      )
+                    ],
+                  ),
                   SfButton(
                     onPressed: () {},
-                    backgroundColor: Colors.white,
-                    foregroundColor: SfacColor.primary60,
-                    ishover: true,
-                    child: const Text('로그인'),
+                    isLink: true,
+                    child: const Text('로그인3'),
                   ),
                   const SizedBox(height: 10),
                   Text('Disabled', style: SfacTextStyle.b1B20()),
@@ -249,7 +337,6 @@ class MyApp extends StatelessWidget {
                   SfButton(
                     onPressed: () {},
                     backgroundColor: SfacColor.primary5,
-                    foregroundColor: SfacColor.primary60,
                     outlineColor: SfacColor.primary40,
                     child: const Text('로그인'),
                   ),
@@ -257,24 +344,22 @@ class MyApp extends StatelessWidget {
                   Text('Ghost', style: SfacTextStyle.b1B20()),
                   SfButton(
                     onPressed: () {},
-                    backgroundColor: Colors.white,
-                    foregroundColor: SfacColor.primary60,
-                    ishover: true,
-                    hoverBackgroundColor: SfacColor.primary10,
+                    textColor: SfacColor.primary60,
+                    hoverbackgroundColor: SfacColor.primary10,
                     child: const Text('로그인'),
                   ),
                   const SizedBox(height: 10),
                   Text('Secondary', style: SfacTextStyle.b1B20()),
                   const SfButton(
                     onPressed: null,
-                    disabledForegroundColor: Colors.black,
+                    disabledTextColor: Colors.black,
                     child: Text('로그인'),
                   ),
                   const SizedBox(height: 10),
                   Text('As Child', style: SfacTextStyle.b1B20()),
                   const SfButton(
                     onPressed: null,
-                    disabledForegroundColor: Colors.black,
+                    disabledTextColor: Colors.black,
                     width: 100,
                     child: Text('로그인'),
                   ),
@@ -321,11 +406,11 @@ class MyApp extends StatelessWidget {
                       const Text('Selected-Sub'),
                       SfSelectedSub(
                           width: 245,
-                          height: 100,
+                          height: 150,
                           onTap: (index) {
                             print(index);
                           },
-                          menu: const ['앱개발', '앱 개발']),
+                          selectMenu: const ['앱개발', '앱 개발', '웹 개발', '띠용']),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -521,7 +606,7 @@ class MyApp extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Wrap(
-                              spacing: 3,
+                              spacing: 10,
                               children: ['무료강의', 'KITRI', '사업계획서', '모집중']
                                   .map((e) => SfBadge(
                                         child: Text(e),
@@ -589,13 +674,20 @@ class MyApp extends StatelessWidget {
                   Text('Tap', style: SfacTextStyle.b1B20()),
                   const SizedBox(height: 10),
                   SfTab(
+                      onTap: (p0) {
+                        print(p0);
+                      },
                       menu: ['과제방', '커뮤니티', '미션', '퀴즈']
                           .map((e) => Text(e))
                           .toList(),
                       height: 50),
                   const SizedBox(height: 10),
-                  const SfNavigationMenu(
-                      height: 50, menu: ['교육 과정', '공지 사항', '게시판'])
+                  SfNavigationMenu(
+                      onTap: (p0) {
+                        print(p0);
+                      },
+                      height: 50,
+                      menu: ['교육 과정', '공지 사항', '게시판'])
                 ],
               ),
             ),
