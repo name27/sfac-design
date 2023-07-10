@@ -14,12 +14,25 @@ class SFTextArea extends StatelessWidget {
     this.readOnly = false,
   });
 
+  //텍스트 필드 컨트롤러
   final TextEditingController controller;
+
+  //작성자 이름
   final String? writer;
+
+  //힌트 텍스트
   final String? hintText;
+
+  //텍스트 스타일
   final TextStyle? textStyle;
+
+  //텍스트필드에 표시될 최소 행 수
   final int? minLines;
+
+  //텍스트필드에 허용되는 최대 행 수
   final int? maxLines;
+
+  //읽기전용 텍스트필드
   final bool readOnly;
 
   @override

@@ -8,9 +8,17 @@ class SfAvatar extends StatelessWidget {
     this.margin,
     this.size = 35,
   });
+
+  //아바타안에 위젯
   final Widget? child;
+
+  //radius
   final double? radius;
+
+  //margin
   final double? margin;
+
+  //size
   final double? size;
 
   @override
