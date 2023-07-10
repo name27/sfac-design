@@ -1,75 +1,40 @@
 // import 'package:flutter/material.dart';
 // import 'package:widgets/endwidget/card.dart';
-// import 'package:widgets/endwidget/select_main.dart';
-// import 'package:widgets/endwidget/select_menu.dart';
-// import 'package:widgets/util/sfac_icon.dart';
-// import 'package:widgets/widget/icon.dart';
+// import 'dart:async';
 
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
+// class SfToast extends StatefulWidget {
+//   const SfToast({super.key, required this.entry, this.decoration});
+//   final SfCard? decoration;
+//   final OverlayEntry entry;
 
 //   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Flutter Demo',
-//       theme: ThemeData(
-//         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-//         useMaterial3: true,
-//       ),
-//       home: const MyHomePage(),
-//     );
-//   }
+//   State<SfToast> createState() => _SfToastState();
 // }
 
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({super.key});
-
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
+// class _SfToastState extends State<SfToast> with SingleTickerProviderStateMixin {
+//   late AnimationController _animationController;
+//   late Animation<double> _animation;
 //   OverlayEntry? _overlayEntry;
-//   final LayerLink _layerLink = LayerLink();
-//   final double width = 250;
-//   Size? size;
-//   final GlobalKey _buttonKey = GlobalKey();
 
 //   void createOverlayEntry() {
-//     _overlayEntry = OverlayEntry(
-//       builder: (context) => Positioned(
-//         width: width,
-//         child: CompositedTransformFollower(
-//           link: _layerLink,
-//           offset: Offset(0, size!.height),
-//           child: SfCard(
-//               width: width,
-//               top: SfSelectedMain(
-//                   width: width,
-//                   height: 250,
-//                   physics: BouncingScrollPhysics(),
-//                   heightSpacing: 10,
-//                   direction: Axis.vertical,
-//                   onTap: (index) {
-//                     print(index);
-//                   },
-//                   children: const [
-//                     SelectMenu(icon: SFIcon(SfacIcon.dart), text: '커뮤니티 전체'),
-//                     SelectMenu(icon: SFIcon(SfacIcon.laptop), text: '웹개발'),
-//                     SelectMenu(icon: SFIcon(SfacIcon.phone), text: '앱개발'),
-//                     SelectMenu(icon: SFIcon(SfacIcon.graph), text: 'BigData'),
-//                     SelectMenu(icon: SFIcon(SfacIcon.palette), text: 'UI/UX'),
-//                     SelectMenu(icon: SFIcon(SfacIcon.lock), text: '해킹/보안'),
-//                     SelectMenu(icon: SFIcon(SfacIcon.robot), text: 'AI'),
-//                     SelectMenu(icon: SFIcon(SfacIcon.gamepad), text: '게임개발')
-//                   ])),
+//     _overlayEntry = OverlayEntry(builder: (context) {
+//       return AnimatedBuilder(
+//         animation: _animation,
+//         builder: (context, child) => Positioned(
+//           top: MediaQuery.of(context).size.height * 0.1, // 토스트의 위치 조정
+//           left: 0,
+//           right: 0,
+//           child: Opacity(
+//             opacity: _animation.value,
+//             child: Material(
+//               color: Colors.transparent,
+//               child:
+//                   Align(alignment: Alignment.center, child: widget.decoration),
+//             ),
+//           ),
 //         ),
-//       ),
-//     );
+//       );
+//     });
 //   }
 
 //   void showDropdown() {
@@ -90,43 +55,141 @@
 //     }
 //   }
 
-//   Size? _getSize() {
-//     if (_buttonKey.currentContext != null) {
-//       final RenderBox renderBox =
-//           _buttonKey.currentContext!.findRenderObject() as RenderBox;
-//       Size size = renderBox.size;
-//       return size;
-//     }
-//     return null;
-//   }
+//   // @override
+//   // void initState() {
+//   //   super.initState();
+//   //   _animationController = AnimationController(
+//   //     duration: const Duration(milliseconds: 1500),
+//   //     vsync: this,
+//   //   );
+//   //   _animation = CurvedAnimation(
+//   //     parent: _animationController,
+//   //     curve: Curves.ease,
+//   //   );
+//   //   _animationController.forward();
+//   //   Timer(const Duration(seconds: 2), () {
+//   //     hideToast();
+//   //   });
+//   // }
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     WidgetsBinding.instance.addPostFrameCallback((_) {
-//       setState(() {
-//         size = _getSize();
-//       });
-//     });
-//   }
+//   // @override
+//   // void dispose() {
+//   //   _animationController.dispose();
+//   //   super.dispose();
+//   // }
+
+//   // void hideToast() {
+//   //   _animationController.reverse().then((_) {
+//   //     widget.entry.remove();
+//   //   });
+//   // }
 
 //   @override
 //   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-//         title: const Text('dropdown test'),
-//       ),
-//       body: Center(
-//         child: CompositedTransformTarget(
-//           link: _layerLink,
-//           child: ElevatedButton(
-//             key: _buttonKey,
-//             onPressed: toggleDropdown,
-//             child: const Text('Toggle Dropdown'),
+//     return AnimatedBuilder(
+//       animation: _animation,
+//       builder: (context, child) => Positioned(
+//         top: MediaQuery.of(context).size.height * 0.1, // 토스트의 위치 조정
+//         left: 0,
+//         right: 0,
+//         child: Opacity(
+//           opacity: _animation.value,
+//           child: Material(
+//             color: Colors.transparent,
+//             child: Align(alignment: Alignment.center, child: widget.decoration),
 //           ),
 //         ),
-//       ), // This trailing comma makes auto-formatting nicer for build methods.
+//       ),
 //     );
 //   }
 // }
+import 'package:flutter/material.dart';
+import 'package:widgets/endwidget/card.dart';
+import 'dart:async';
+
+
+class ToastOverlay {
+  static void show(BuildContext context, Widget child) {
+    final overlayState = Overlay.of(context);
+    OverlayEntry? overlayEntry;
+
+    overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: MediaQuery.of(context).size.height * 0.1,
+        left: 0,
+        right: 0,
+        child: Material(
+          color: Colors.transparent,
+          child: child,
+        ),
+      ),
+    );
+
+    overlayState.insert(overlayEntry);
+    Timer(const Duration(seconds: 2), () {
+      overlayEntry!.remove();
+    });
+  }
+}
+
+class SfToast extends StatefulWidget {
+  const SfToast({super.key, required this.entry, this.decoration});
+  final SfCard? decoration;
+  final OverlayEntry entry;
+
+  @override
+  State<SfToast> createState() => _SfToastState();
+}
+
+class _SfToastState extends State<SfToast> with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: const Duration(milliseconds: 1500),
+      vsync: this,
+    );
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.ease,
+    );
+    _animationController.forward();
+    Timer(const Duration(seconds: 2), () {
+      hideToast();
+    });
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  void hideToast() {
+    _animationController.reverse().then((_) {
+      widget.entry.remove();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _animation,
+      builder: (context, child) => Positioned(
+        top: MediaQuery.of(context).size.height * 0.1, // 토스트의 위치 조정
+        left: 0,
+        right: 0,
+        child: Opacity(
+          opacity: _animation.value,
+          child: Material(
+            color: Colors.transparent,
+            child: Align(alignment: Alignment.center, child: widget.decoration),
+          ),
+        ),
+      ),
+    );
+  }
+}

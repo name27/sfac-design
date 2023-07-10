@@ -56,31 +56,39 @@ class _ComboBoxState extends State<ComboBox> {
         child: CompositedTransformFollower(
           link: _layerLink,
           offset: Offset(0, size!.height),
-          child: SfCard(
-            outlineColor: widget.outlineColor,
-            outlineWidth: widget.outlineWidth,
-            outlineRadius: widget.outlineRadius,
-            margin: widget.margin,
-            top: SfSelectedMain(
-              downDuration: 300,
-              heightSpacing: 10,
-              direction: Axis.vertical,
-              height: widget.height,
-              selectMenu: widget.selectMenu,
-              focusedIndex: focusedIndex,
-              physics: widget.boxScorllPhysics,
-              onTap: (index) {
-                if (widget.onTap != null) {
-                  widget.onTap!(index);
-                }
-                title = widget.selectMenu[index]!.text;
-                icon = widget.selectMenu[index]?.icon;
-                focusedIndex = index;
-                if (_overlayEntry != null) {
-                  hideDropdown();
-                }
-                setState(() {});
-              },
+          child: Container(
+            width: widget.width,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(widget.outlineRadius),
+              border: Border.all(
+                color: widget.outlineColor ?? SfacColor.grayScale20,
+                width: widget.outlineWidth,
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(widget.margin),
+              child: SfSelectedMain(
+                downDuration: const Duration(milliseconds: 300),
+                heightSpacing: 10,
+                direction: Axis.vertical,
+                height: widget.height,
+                selectMenu: widget.selectMenu,
+                focusedIndex: focusedIndex,
+                physics: widget.boxScorllPhysics,
+                onTap: (index) {
+                  if (widget.onTap != null) {
+                    widget.onTap!(index);
+                  }
+                  title = widget.selectMenu[index]!.text;
+                  icon = widget.selectMenu[index]?.icon;
+                  focusedIndex = index;
+                  if (_overlayEntry != null) {
+                    hideDropdown();
+                  }
+                  setState(() {});
+                },
+              ),
             ),
           ),
         ),
@@ -133,26 +141,39 @@ class _ComboBoxState extends State<ComboBox> {
       child: CompositedTransformTarget(
         link: _layerLink,
         child: GestureDetector(
-          key: _buttonKey,
-          onTap: toggleDropdown,
-          child: SfCard(
-            outlineColor: widget.outlineColor,
-            outlineWidth: widget.outlineWidth,
-            outlineRadius: widget.outlineRadius,
-            margin: widget.margin,
-            width: widget.width,
-            top: title != ''
-                ? SelectMenu(
-                    icon: icon,
-                    text: title,
-                  )
-                : Text(
-                    widget.title ?? 'Select framework',
-                    style: SfacTextStyle.b3R16(color: SfacColor.grayScale40),
-                  ),
-            right: widget.trailingIcon ?? const SFIcon(SfacIcon.coverbox),
-          ),
-        ),
+            key: _buttonKey,
+            onTap: toggleDropdown,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(widget.outlineRadius),
+                border: Border.all(
+                  color: widget.outlineColor ?? SfacColor.grayScale20,
+                  width: widget.outlineWidth,
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(widget.margin),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(
+                      child: title != ''
+                          ? SelectMenu(
+                              icon: icon,
+                              text: title,
+                            )
+                          : Text(
+                              widget.title ?? 'Select framework',
+                              style: SfacTextStyle.b3R16(
+                                  color: SfacColor.grayScale40),
+                            ),
+                    ),
+                    widget.trailingIcon ?? const SFIcon(SfacIcon.coverbox),
+                  ],
+                ),
+              ),
+            )),
       ),
     );
   }

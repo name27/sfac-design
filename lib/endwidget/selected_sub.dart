@@ -5,7 +5,7 @@ import 'package:widgets/util/sfac_text_style.dart';
 class SfSelectedSub extends StatefulWidget {
   const SfSelectedSub({
     super.key,
-    required this.menu,
+    required this.selectMenu,
     this.width,
     required this.height,
     this.focusedColor,
@@ -15,7 +15,7 @@ class SfSelectedSub extends StatefulWidget {
     this.margin,
     this.physics,
   });
-  final List<String> menu;
+  final List<String> selectMenu;
   final double? width;
   final double height;
   final Color? focusedColor;
@@ -31,6 +31,14 @@ class SfSelectedSub extends StatefulWidget {
 
 class _SelectedSubState extends State<SfSelectedSub> {
   int focusedChild = 0;
+  List<bool> ishover = [];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ishover = List.generate(widget.selectMenu.length, (index) => false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -39,8 +47,10 @@ class _SelectedSubState extends State<SfSelectedSub> {
       child: ListView.builder(
         physics: widget.physics ?? const NeverScrollableScrollPhysics(),
         scrollDirection: widget.direction,
-        itemCount: widget.menu.length,
-        itemBuilder: (context, index) => GestureDetector(
+        itemCount: widget.selectMenu.length,
+        itemBuilder: (context, index) => InkWell(
+          splashColor: Colors.transparent, // 클릭할 때 나오는 효과 색상
+          highlightColor: Colors.transparent, // 클릭 유지 시 나오는 효과 색상
           onTap: () {
             if (widget.onTap != null) {
               widget.onTap!(index);
@@ -48,14 +58,21 @@ class _SelectedSubState extends State<SfSelectedSub> {
             focusedChild = index;
             setState(() {});
           },
+          onHover: (value) {
+            ishover[index] = value;
+            setState(() {});
+          },
+          hoverColor: Colors.transparent,
           child: Padding(
             padding: widget.margin ?? const EdgeInsets.all(8.0),
             child: Text(
-              widget.menu[index],
+              widget.selectMenu[index],
               style: SfacTextStyle.b4R14(
-                  color: focusedChild == index
+                  color: ishover[index]
                       ? widget.focusedColor ?? SfacColor.primary80
-                      : widget.defaultColor ?? Colors.black),
+                      : focusedChild == index
+                          ? widget.focusedColor ?? SfacColor.primary80
+                          : widget.defaultColor ?? Colors.black),
             ),
           ),
         ),
