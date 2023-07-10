@@ -17,18 +17,38 @@ class SfacInput extends StatelessWidget {
     this.inputDecorationBorderRadius = 10,
     });
 
-  final TextEditingController controller; //텍스트 필드 컨트롤러
+  //텍스트 필드 컨트롤러
+  final TextEditingController controller;
+
   //onChanged: input 칸의 내용이 바로바로 바뀔 때
   final Function(String)? onchanged;
-  final Text? inputContent;   //텍스트필드 위에 Text
-  final Color? fillColor; //텍스트필드 색상
-  final String? hintText; //힌트 텍스트
-  final String? errorText; //에러 텍스트
-  final Function(String)? onChanged; //onChanged 이벤트
-  final bool obscureText; //텍스트 가림 여부
-  final Color? errorTextColor; //error텍스트 색
-  final String? helperText; //텍스트필드 아래 helperText
-  final double inputDecorationBorderRadius; //텍스트필드 모서리둥글게
+
+  //텍스트필드 위에 Text
+  final Text? inputContent;
+
+  //텍스트필드 색상
+  final Color? fillColor;
+
+  //힌트 텍스트
+  final String? hintText;
+
+  //에러 텍스트
+  final String? errorText;
+
+  //onChanged 이벤트
+  final Function(String)? onChanged;
+
+  //텍스트 가림 여부
+  final bool obscureText;
+
+  //error텍스트 색
+  final Color? errorTextColor;
+
+  //텍스트필드 아래 helperText
+  final String? helperText;
+
+  //텍스트필드 모서리둥글게
+  final double inputDecorationBorderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +62,7 @@ class SfacInput extends StatelessWidget {
         TextFormField(
           onChanged: onchanged,
           controller: controller,
+          style: const TextStyle(decorationThickness: 0),
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: SfacTextStyle.b4M14(color: SfacColor.grayScale20),
@@ -50,7 +71,6 @@ class SfacInput extends StatelessWidget {
             helperText: helperText,
             helperStyle: SfacTextStyle.b5R12(color: SfacColor.grayScale40),
             errorText: errorText,
-            //에러text가 있을 경우 에러 글자수에 따라 에러색을 다르게 해야하나 말아야하나..
             errorStyle: SfacTextStyle.b5R12(
             color: SfacColor.red),
             border: OutlineInputBorder(
