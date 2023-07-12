@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
-class SfSelectedSub extends StatefulWidget {
-  const SfSelectedSub({
+class SFSelectedSub extends StatefulWidget {
+  const SFSelectedSub({
     super.key,
     required this.selectMenu,
     this.width,
@@ -26,10 +26,10 @@ class SfSelectedSub extends StatefulWidget {
   final ScrollPhysics? physics;
 
   @override
-  State<SfSelectedSub> createState() => _SelectedSubState();
+  State<SFSelectedSub> createState() => _SelectedSubState();
 }
 
-class _SelectedSubState extends State<SfSelectedSub> {
+class _SelectedSubState extends State<SFSelectedSub> {
   int focusedChild = 0;
   List<bool> ishover = [];
   @override
@@ -46,7 +46,7 @@ class _SelectedSubState extends State<SfSelectedSub> {
       height: widget.height,
       child: ListView.builder(
         physics: widget.physics ?? const NeverScrollableScrollPhysics(),
-        scrollDirection: widget.direction,
+        scrollDirection: widget.direction,      
         itemCount: widget.selectMenu.length,
         itemBuilder: (context, index) => InkWell(
           splashColor: Colors.transparent, // 클릭할 때 나오는 효과 색상

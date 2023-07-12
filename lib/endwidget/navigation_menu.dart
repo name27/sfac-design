@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
-class SfNavigationMenu extends StatefulWidget {
-  const SfNavigationMenu({
+class SFNavigationMenu extends StatefulWidget {
+  const SFNavigationMenu({
     super.key,
     required this.menu,
     this.width,
     required this.height,
+    this.menuWidth,
+    this.menuHeigh,
+    this.menuSpacing = 5,
     this.backgroundColor,
     this.focusedBackgroundColor,
     this.defaultMenuColor,
@@ -17,12 +20,15 @@ class SfNavigationMenu extends StatefulWidget {
     this.outlineWidth,
     this.direction = Axis.horizontal,
     this.onTap,
-    this.margin,
+    this.padding,
     this.physics,
   });
   final List<String> menu;
   final double? width;
   final double height;
+  final double? menuWidth;
+  final double? menuHeigh;
+  final double? menuSpacing;
   final Color? backgroundColor;
   final Color? focusedBackgroundColor;
   final Color? defaultMenuColor;
@@ -32,19 +38,18 @@ class SfNavigationMenu extends StatefulWidget {
   final double? outlineWidth;
   final Axis direction;
   final Function(int)? onTap;
-  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
   final ScrollPhysics? physics;
 
   @override
-  State<SfNavigationMenu> createState() => _SfNavigationMenu();
+  State<SFNavigationMenu> createState() => _SFNavigationMenu();
 }
 
-class _SfNavigationMenu extends State<SfNavigationMenu> {
+class _SFNavigationMenu extends State<SFNavigationMenu> {
   int focusedChild = 0;
   List<bool> ishover = [];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     ishover = List.generate(widget.menu.length, (index) => false);
   }
@@ -54,7 +59,7 @@ class _SfNavigationMenu extends State<SfNavigationMenu> {
     return SizedBox(
       width: widget.width,
       height: widget.height,
-      child: ListView.builder(
+      child: ListView.separated(
         physics: widget.physics ?? const NeverScrollableScrollPhysics(),
         scrollDirection: widget.direction,
         itemCount: widget.menu.length,
@@ -74,6 +79,9 @@ class _SfNavigationMenu extends State<SfNavigationMenu> {
             setState(() {});
           },
           child: Container(
+            width: widget.menuWidth,
+            height: widget.menuHeigh,
+            padding: widget.padding ?? const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
                 color: focusedChild == index
                     ? widget.focusedBackgroundColor ?? SfacColor.primary5
@@ -82,20 +90,19 @@ class _SfNavigationMenu extends State<SfNavigationMenu> {
                     width: widget.outlineWidth ?? 0,
                     color: widget.outlineColor ?? Colors.transparent),
                 borderRadius: BorderRadius.circular(widget.radius)),
-            child: Padding(
-              padding: widget.margin ?? const EdgeInsets.all(12.0),
-              child: Text(
-                widget.menu[index],
-                style: SfacTextStyle.b3M16(
-                    color: ishover[index]
-                        ? widget.focusedMenuColor ?? SfacColor.primary80
-                        : focusedChild == index
-                            ? widget.focusedMenuColor ?? SfacColor.primary80
-                            : widget.defaultMenuColor ?? Colors.black),
-              ),
+            child: Text(
+              widget.menu[index],
+              style: SfacTextStyle.b3M16(
+                  color: ishover[index]
+                      ? widget.focusedMenuColor ?? SfacColor.primary80
+                      : focusedChild == index
+                          ? widget.focusedMenuColor ?? SfacColor.primary80
+                          : widget.defaultMenuColor ?? Colors.black),
             ),
           ),
         ),
+        separatorBuilder: (context, index) =>
+            SizedBox(width: widget.menuSpacing),
       ),
     );
   }
