@@ -7,7 +7,10 @@ class SFIcon extends StatelessWidget {
   this.size
   });
 
+  //아이콘 이름
   final String? iconName;
+
+  //아이콘 사이즈
   final double? size;
 
   @override

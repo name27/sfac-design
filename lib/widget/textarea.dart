@@ -20,7 +20,11 @@ class SFTextArea extends StatelessWidget {
   });
 
   //텍스트 필드 컨트롤러
+<<<<<<< HEAD
   final TextEditingController? controller;
+=======
+  final TextEditingController controller;
+>>>>>>> main
 
   //작성자 이름
   final String? writer;
@@ -28,10 +32,14 @@ class SFTextArea extends StatelessWidget {
   //힌트 텍스트
   final String? hintText;
 
+<<<<<<< HEAD
   //힌트 텍스트 스타일
   final TextStyle? hintStyle;
 
   //입력텍스트 스타일
+=======
+  //텍스트 스타일
+>>>>>>> main
   final TextStyle? textStyle;
 
   //텍스트필드에 표시될 최소 행 수

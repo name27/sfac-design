@@ -29,7 +29,7 @@ class SFComboBox extends StatefulWidget {
   final double outlineRadius;
   final double? width;
   final double height;
-  final Icon? trailingIcon;
+  final Widget? trailingIcon;
   final Function(int)? onTap;
   final ScrollPhysics? boxScorllPhysics;
 
