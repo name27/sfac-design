@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
-class SelectMenu extends StatelessWidget {
-  const SelectMenu(
+class SFSelectMenu extends StatelessWidget {
+  const SFSelectMenu(
       {super.key,
       this.icon,
       required this.text,

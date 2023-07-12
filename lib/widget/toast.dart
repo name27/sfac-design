@@ -148,11 +148,57 @@
 //   }
 // }
 import 'package:flutter/material.dart';
+import 'package:widgets/pullwidget/card.dart';
 
-void showToast(BuildContext context, String message) {
-  final snackBar = SnackBar(
-    content: Text(message),
-    duration: Duration(seconds: 2), // 토스트 메시지가 표시되는 시간 설정
-  );
-  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+class SFToast extends StatefulWidget {
+  const SFToast({super.key, this.title, this.content, this.trailing});
+  final Widget? title;
+  final Widget? content;
+  final Widget? trailing;
+
+  @override
+  State<SFToast> createState() => _SFToastState();
+}
+
+class _SFToastState extends State<SFToast> {
+  OverlayEntry? _overlayEntry;
+  final LayerLink _layerLink = LayerLink();
+
+   void createOverlayEntry() {
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: MediaQuery.of(context).size.height,
+        child: CompositedTransformFollower(
+          link: _layerLink,
+          child: SFCard(
+            title: widget.title,
+            content: widget.content,
+          ),
+        ),
+      ),
+    );
+  }
+
+  void showDropdown() {
+    Overlay.of(context).insert(_overlayEntry!);
+  }
+
+  void hideDropdown() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
+  }
+
+  void toggleDropdown() {
+    if (_overlayEntry == null) {
+      createOverlayEntry();
+      showDropdown();
+    } else {
+      hideDropdown();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
 }

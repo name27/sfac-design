@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SfImageCard extends StatelessWidget {
-  const SfImageCard(
+class SFImageCard extends StatelessWidget {
+  const SFImageCard(
       {super.key,
       this.image,
       this.topRadius = 10,

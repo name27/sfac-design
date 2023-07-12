@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:widgets/endwidget/select_menu.dart';
 import 'package:widgets/util/sfac_color.dart';
 
-class SfSelectedMain extends StatefulWidget {
-  const SfSelectedMain({
+class SFSelectedMain extends StatefulWidget {
+  const SFSelectedMain({
     super.key,
     required this.selectMenu,
     this.width,
@@ -21,7 +21,7 @@ class SfSelectedMain extends StatefulWidget {
     this.focusedIndex = 0,
     this.downDuration,
   });
-  final List<SelectMenu?> selectMenu;
+  final List<SFSelectMenu?> selectMenu;
   final double? width;
   final double height;
   final Color? backgroundColor;
@@ -38,10 +38,10 @@ class SfSelectedMain extends StatefulWidget {
   final Duration? downDuration;
 
   @override
-  State<SfSelectedMain> createState() => _SelectedMainState();
+  State<SFSelectedMain> createState() => _SelectedMainState();
 }
 
-class _SelectedMainState extends State<SfSelectedMain>
+class _SelectedMainState extends State<SFSelectedMain>
     with SingleTickerProviderStateMixin {
   int? focusedChild;
   late AnimationController _controller;

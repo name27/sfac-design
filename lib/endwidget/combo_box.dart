@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:widgets/endwidget/card.dart';
 import 'package:widgets/endwidget/select_main.dart';
 import 'package:widgets/endwidget/select_menu.dart';
 import 'package:widgets/util/sfac_color.dart';
@@ -7,8 +6,8 @@ import 'package:widgets/util/sfac_icon.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 import 'package:widgets/widget/icon.dart';
 
-class ComboBox extends StatefulWidget {
-  const ComboBox({
+class SFComboBox extends StatefulWidget {
+  const SFComboBox({
     super.key,
     required this.selectMenu,
     this.title,
@@ -23,7 +22,7 @@ class ComboBox extends StatefulWidget {
     this.boxScorllPhysics,
   });
   final String? title;
-  final List<SelectMenu?> selectMenu;
+  final List<SFSelectMenu?> selectMenu;
   final double margin;
   final Color? outlineColor;
   final double outlineWidth;
@@ -35,10 +34,10 @@ class ComboBox extends StatefulWidget {
   final ScrollPhysics? boxScorllPhysics;
 
   @override
-  State<ComboBox> createState() => _ComboBoxState();
+  State<SFComboBox> createState() => _SFComboBoxState();
 }
 
-class _ComboBoxState extends State<ComboBox> {
+class _SFComboBoxState extends State<SFComboBox> {
   bool isTap = false;
   String title = '';
   Widget? icon;
@@ -68,7 +67,7 @@ class _ComboBoxState extends State<ComboBox> {
             ),
             child: Padding(
               padding: EdgeInsets.all(widget.margin),
-              child: SfSelectedMain(
+              child: SFSelectedMain(
                 downDuration: const Duration(milliseconds: 300),
                 heightSpacing: 10,
                 direction: Axis.vertical,
@@ -159,7 +158,7 @@ class _ComboBoxState extends State<ComboBox> {
                   children: [
                     Expanded(
                       child: title != ''
-                          ? SelectMenu(
+                          ? SFSelectMenu(
                               icon: icon,
                               text: title,
                             )

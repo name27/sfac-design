@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:widgets/util/sfac_color.dart';
 import 'package:widgets/util/sfac_text_style.dart';
 
-class SfButton extends StatefulWidget {
-  const SfButton({
+class SFButton extends StatefulWidget {
+  const SFButton({
     super.key,
     this.backgroundColor,
     this.textColor,
@@ -36,10 +36,10 @@ class SfButton extends StatefulWidget {
   final bool isLink;
 
   @override
-  State<SfButton> createState() => _SfButtonState();
+  State<SFButton> createState() => _SFButtonState();
 }
 
-class _SfButtonState extends State<SfButton> {
+class _SFButtonState extends State<SFButton> {
   bool ishover = false;
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,9 @@ class _SfButtonState extends State<SfButton> {
           : SfacTextStyle.b3B16(
               color: widget.onPressed == null
                   ? widget.disabledTextColor ?? SfacColor.grayScale20
-                  : widget.textColor ?? SfacColor.primary60);
+                  : widget.isLink
+                      ? widget.textColor ?? SfacColor.primary60
+                      : widget.textColor ?? Colors.white);
       childText = AnimatedDefaultTextStyle(
         style: childStyle,
         duration: kThemeChangeDuration,
@@ -84,7 +86,7 @@ class _SfButtonState extends State<SfButton> {
               ? Colors.transparent
               : widget.onPressed == null
                   ? widget.disabledbackgroundColor ?? SfacColor.grayScale5
-                  : widget.backgroundColor ?? Colors.transparent,
+                  : widget.backgroundColor ?? SfacColor.primary100,
           borderRadius: BorderRadius.circular(widget.outlineRadius),
           border: Border.all(
             color: widget.outlineColor ?? Colors.transparent,
